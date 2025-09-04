@@ -163,6 +163,52 @@ export default function App() {
           </div>
         </div>
       </section>
+      {/* Reviews */}
+<section id="reviews" className="py-20 bg-white border-t border-slate-200">
+  <div className="mx-auto max-w-6xl px-4">
+    <div className="mx-auto max-w-3xl text-center mb-12">
+      <p className="uppercase tracking-widest text-sm font-semibold text-[#0b3b5a]">Reviews</p>
+      <h2 className="mt-2 text-3xl md:text-4xl font-bold text-slate-900">What our clients say</h2>
+      <p className="mt-3 text-slate-600">Here’s what recent clients have said about working with {BRAND.principal}.</p>
+    </div>
+
+    <div className="grid gap-6 md:grid-cols-2">
+      {[
+        {
+          name: "Sarah M.",
+          text: "Rocky made refinancing so simple. He explained everything clearly and got me a much better rate.",
+        },
+        {
+          name: "Daniel P.",
+          text: "As a first-home buyer, I had so many questions. Rocky was patient, professional, and helped me feel confident.",
+        },
+        {
+          name: "Melissa T.",
+          text: "Trimboli Finance made the process stress-free. I recommend Rocky to all my friends.",
+        },
+      ].map((review, idx) => (
+        <div key={idx} className="rounded-2xl bg-[#f8f9fb] p-6 shadow">
+          <p className="text-slate-700 italic">“{review.text}”</p>
+          <p className="mt-4 font-semibold text-[#0b3b5a]">— {review.name}</p>
+        </div>
+      ))}
+    </div>
+
+    {/* Leave review button */}
+    <div className="mt-10 text-center">
+      <a
+        href="https://g.page/r/your-google-business-link/review" // replace with your Google review link
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center rounded-xl px-6 py-3 text-lg font-semibold text-white shadow hover:shadow-md"
+        style={{ backgroundColor: "#0b3b5a" }}
+      >
+        Leave a Google Review
+      </a>
+    </div>
+  </div>
+</section>
+
 
       {/* Contact */}
       <section id="contact" className="py-20 bg-white border-t border-slate-200">
