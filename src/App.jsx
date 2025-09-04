@@ -5,7 +5,7 @@ const BRAND = {
   name: "Trimboli Finance",
   tagline: "Helping you secure the right loan, stress-free.",
   phone: "0433 068 076",
-  email: "Rocky@trimbolifinance.com", // ← change if needed
+  email: "Rocky@trimbolifinance.com",
   principal: "Rocky Trimboli",
 };
 
@@ -15,7 +15,6 @@ const NAVY = {
   light: "#f8f9fb",
 };
 
-/* ---------- Small helpers ---------- */
 const SectionHeading = ({ kicker, title, subtitle }) => (
   <div className="mx-auto max-w-3xl text-center">
     {kicker && (
@@ -55,7 +54,6 @@ const Nav = () => {
             <p className="text-xs text-slate-500 -mt-0.5">By {BRAND.principal}</p>
           </div>
         </a>
-
         <nav className="hidden md:flex items-center gap-6">
           {links.map((l) => (
             <a
@@ -79,18 +77,16 @@ const Nav = () => {
             Free consult
           </a>
         </nav>
-
         <button
           className="md:hidden inline-flex items-center justify-center rounded-xl border p-2"
           aria-label="Toggle menu"
           onClick={() => setOpen(!open)}
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5M3.75 12h16.5M3.75 18.75h16.5" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5m-16.5 6.75h16.5m-16.5 6.75h16.5" />
           </svg>
         </button>
       </div>
-
       {open && (
         <div className="md:hidden bg-white border-t border-slate-200 px-4 py-3 space-y-2">
           {links.map((l) => (
@@ -166,7 +162,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Lenders (logos served from /public/logos/) */}
+      {/* Lenders */}
       <section id="lenders" className="py-16 bg-white border-t border-slate-200">
         <div className="mx-auto max-w-6xl px-4 text-center">
           <p className="uppercase tracking-widest text-sm font-semibold" style={{ color: NAVY.base }}>
@@ -198,7 +194,6 @@ export default function App() {
             title="What our clients say"
             subtitle={`Here’s what recent clients have said about working with ${BRAND.principal}.`}
           />
-
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {[
               { name: "Sarah M.", text: "Rocky made refinancing so simple. Clear explanations and a great rate." },
@@ -215,7 +210,7 @@ export default function App() {
 
           <div className="mt-10 text-center">
             <a
-              href="https://g.page/r/YOUR-GOOGLE-REVIEW-LINK/review" // ← replace with your real Google review link
+              href="https://g.page/r/YOUR-GOOGLE-REVIEW-LINK/review"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center rounded-xl px-6 py-3 text-lg font-semibold text-white shadow hover:shadow-md"
@@ -235,34 +230,15 @@ export default function App() {
             title="Contact Rocky Trimboli"
             subtitle="Whether you're buying your first home, refinancing, or investing, we're here to help."
           />
-          <div className="mt-8 space-y-4 text-lg">
-            <p>
-              📞{" "}
-              <a href={`tel:${BRAND.phone}`} className="font-semibold" style={{ color: NAVY.base }}>
-                {BRAND.phone}
-              </a>
-            </p>
-            <p>
-              📧{" "}
-              <a href={`mailto:${BRAND.email}`} className="font-semibold" style={{ color: NAVY.base }}>
-                {BRAND.email}
-              </a>
-            </p>
-          </div>
         </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-8 text-white text-center text-sm" style={{ backgroundColor: NAVY.base }}>
-        <p>© {new Date().getFullYear()} {BRAND.name}. All rights reserved.</p>
-        <p className="mt-2">
-          Credit Representative of AFG (Australian Finance Group). Australian Credit Licence No. [YOUR ACL NUMBER].
-        </p>
-        <div className="mt-4 flex justify-center">
-          <img src="/logos/afg.png" alt="AFG" className="h-8" />
-        </div>
-      </footer>
-    </div>
-  );
-}
-
+        <div className="mx-auto max-w-3xl mt-8 space-y-4 text-lg text-center">
+          <p>
+            📞{" "}
+            <a href={`tel:${BRAND.phone}`} className="font-semibold" style={{ color: NAVY.base }}>
+              {BRAND.phone}
+            </a>
+          </p>
+          <p>
+            📧{" "}
+            <a href={`mailto:${BRAND.email}`} className="font-semibold" style={{ color: NAVY.base }}>
+              {BRAND.email
