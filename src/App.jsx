@@ -4,7 +4,7 @@ const BRAND = {
   name: "Trimboli Finance",
   tagline: "Helping you secure the right loan, stress-free.",
   phone: "0432 068 076",
-  email: "Rocky@trimbolifinance.com",
+  email: "Rocky@trimbolifinance.com.au",
   address: "",
   abn: "",
   creditLicense: "",
