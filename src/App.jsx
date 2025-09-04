@@ -135,6 +135,28 @@ export default function App() {
           </div>
         </div>
       </section>
+{/* Lenders Section */}
+<section id="lenders" className="py-16 bg-[#f8f9fb]">
+  <div className="mx-auto max-w-6xl px-4 text-center">
+    <p className="uppercase tracking-widest text-sm font-semibold text-[#0b3b5a]">
+      A Selection From Our Panel of Lenders
+    </p>
+    <h2 className="mt-2 text-3xl md:text-4xl font-bold text-slate-900">
+      Access to Australia’s Leading Banks & Lenders
+    </h2>
+
+    <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Westpac_2019.svg" alt="Westpac" className="h-12 mx-auto" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Commonwealth_Bank_logo.svg" alt="Commonwealth Bank" className="h-12 mx-auto" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/ANZ_logo.svg" alt="ANZ" className="h-12 mx-auto" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/ING_Group_logo.svg" alt="ING" className="h-12 mx-auto" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Suncorp_logo.svg" alt="Suncorp" className="h-12 mx-auto" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Macquarie_Group_logo.svg" alt="Macquarie" className="h-12 mx-auto" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Bank_Australia_logo.svg" alt="Bank Australia" className="h-12 mx-auto" />
+      <img src="https://www.afgonline.com.au/wp-content/uploads/2022/06/AFG_MasterBrand_Logo_RGB.png" alt="AFG" className="h-12 mx-auto" />
+    </div>
+  </div>
+</section>
 
       {/* Services (simple navy/white cards) */}
       <section id="services" className="py-16" style={{ backgroundColor: NAVY.light }}>
@@ -163,6 +185,7 @@ export default function App() {
           </div>
         </div>
       </section>
+      
       {/* Reviews */}
 <section id="reviews" className="py-20 bg-white border-t border-slate-200">
   <div className="mx-auto max-w-6xl px-4">
