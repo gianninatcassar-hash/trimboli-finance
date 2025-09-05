@@ -204,7 +204,7 @@ function App() {
               { src: "/logos/suncorp.png", alt: "Suncorp" },
               { src: "/logos/macquarie.png", alt: "Macquarie" },
               { src: "/logos/bom.png", alt: "Bank of Melbourne" },
-              { src: "/logos/bankwest.png", alt: "Bankwest" },
+              { src: "/logos/bw.png", alt: "Bankwest" },
               { src: "/logos/afg.png", alt: "AFG" },
             ].map((l) => (
               <img key={l.alt} src={l.src} alt={l.alt} className="h-12 mx-auto opacity-100" />
