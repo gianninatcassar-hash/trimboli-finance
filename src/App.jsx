@@ -37,7 +37,7 @@ const Topbar = () => (
     className="w-full text-white"
     style={{ backgroundColor: COLORS.navyDark }}
   >
-    <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-end">
+    <div className="mx-auto max-w-7xl px-4 py-3 flex justify-end">
       {/* Phone + Email stacked vertically */}
       <div className="flex flex-col items-end gap-1">
         {/* Phone number — always gold, no wrapping */}
