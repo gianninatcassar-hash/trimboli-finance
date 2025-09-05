@@ -11,7 +11,7 @@ const BRAND = {
 const COLORS = {
   navy: "#0b3b5a",
   navyDark: "#07293f",
-  gold: "#0b3b5a", // use navy as the accent
+  gold: "#0b3b5a", // using navy as the accent color
   ink: "#0f172a",
   paper: "#f8f9fb",
 };
@@ -53,11 +53,7 @@ const Topbar = () => (
         <a href={`tel:${BRAND.phone}`} className="text-xl font-bold whitespace-nowrap" style={{ color: "white" }}>
           📞 {BRAND.phone}
         </a>
-        <a
-          href={`mailto:${BRAND.email}`}
-          className="text-base font-semibold whitespace-nowrap"
-          style={{ color: "white" }}
-        >
+        <a href={`mailto:${BRAND.email}`} className="text-base font-semibold whitespace-nowrap" style={{ color: "white" }}>
           ✉️ {BRAND.email}
         </a>
       </div>
@@ -78,7 +74,7 @@ const Nav = () => {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-        {/* Removed broken logo image, using brand text instead */}
+        {/* Brand text (no image) */}
         <a href="#home" className="text-lg font-bold text-slate-900">
           Trimboli Finance
         </a>
@@ -136,11 +132,11 @@ function App() {
       <Topbar />
       <Nav />
 
-      {/* HERO BANNER (fit image, no crop) */}
+      {/* HERO BANNER (no text, fits fully) */}
       <section id="home" className="relative">
         <div
           className="h-[70vh] md:h-[78vh] w-full bg-no-repeat bg-center bg-contain"
-          style={{ backgroundImage: "url(/hero-banner.png)", backgroundColor: COLORS.navy }}
+          style={{ backgroundImage: "url(/hero-banner-clean.png)", backgroundColor: COLORS.navy }}
         />
       </section>
 
@@ -188,15 +184,15 @@ function App() {
 
           {/* Supports multiple file-name variants for each logo */}
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
-            <Logo alt="Westpac"         srcs={["/logos/bb.png", "/logos/westpac.png"]} />
-            <Logo alt="Commonwealth"    srcs={["/logos/cbaa.png", "/logos/cba.png", "/logos/commonwealth.png"]} />
+            <Logo alt="Westpac"         srcs={["/logos/westpac.png", "/logos/bb.png"]} />
+            <Logo alt="Commonwealth"    srcs={["/logos/cba.png", "/logos/cbaa.png", "/logos/commonwealth.png"]} />
             <Logo alt="ANZ"             srcs={["/logos/anz.png"]} />
-            <Logo alt="ING"             srcs={["/logos/ingg.png", "/logos/ing.png"]} />
-            <Logo alt="Suncorp"         srcs={["/logos/sc.png", "/logos/suncorp.png"]} />
-            <Logo alt="Macquarie"       srcs={["/logos/so.png", "/logos/macquarie.png"]} />
-            <Logo alt="Bank of Melbourne / Bank Australia" srcs={["/logos/bom.png", "/logos/bankaustralia.png", "/logos/bank-of-melbourne.png"]} />
-            <Logo alt="Bankwest"        srcs={["/logos/bw.png", "/logos/bankwest.png"]} />
-            <Logo alt="AFG"             srcs={["/logos/afgh.png", "/logos/afg.png"]} />
+            <Logo alt="ING"             srcs={["/logos/ing.png", "/logos/ingg.png"]} />
+            <Logo alt="Suncorp"         srcs={["/logos/suncorp.png", "/logos/sc.png"]} />
+            <Logo alt="Macquarie"       srcs={["/logos/macquarie.png", "/logos/so.png"]} />
+            <Logo alt="Bank Australia / Bank of Melbourne" srcs={["/logos/bankaustralia.png", "/logos/bom.png"]} />
+            <Logo alt="Bankwest"        srcs={["/logos/bankwest.png", "/logos/bw.png"]} />
+            <Logo alt="AFG"             srcs={["/logos/afg.png", "/logos/afgh.png"]} />
           </div>
         </div>
       </section>
