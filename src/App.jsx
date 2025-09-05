@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 /* ---------- Brand & Theme ---------- */
 const BRAND = {
-  name: "Trimboli Finance",
   tagline: "Mortgage solutions with clarity and care.",
   phone: "0432 068 076",
   email: "Rocky@trimbolifinance.com.au",
@@ -11,7 +10,6 @@ const BRAND = {
 const COLORS = {
   navy: "#0b3b5a",
   navyDark: "#07293f",
-  gold: "#0b3b5a", // navy accent
   ink: "#0f172a",
   paper: "#f8f9fb",
 };
@@ -31,7 +29,7 @@ const SectionHeader = ({ kicker, title, subtitle }) => (
   </div>
 );
 
-/* ---------- Logo fallback component ---------- */
+/* Try multiple filenames for each lender logo */
 const Logo = ({ srcs, alt }) => {
   const [idx, setIdx] = useState(0);
   if (idx >= srcs.length) return null;
@@ -61,7 +59,7 @@ const Topbar = () => (
   </div>
 );
 
-/* ---------- Nav ---------- */
+/* ---------- Nav (no brand text/logo) ---------- */
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const links = [
@@ -73,10 +71,9 @@ const Nav = () => {
 
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
-      <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-        {/* Removed brand text/logo completely */}
-
-        <nav className="hidden md:flex items-center gap-8 ml-auto">
+      <div className="mx-auto max-w-7xl px-4 py-3 flex items-center">
+        {/* nothing on the left */}
+        <nav className="ml-auto hidden md:flex items-center gap-8">
           {links.map((l) => (
             <a key={l.href} href={l.href} className="text-sm font-medium text-slate-700 hover:text-slate-900">
               {l.label}
@@ -85,14 +82,14 @@ const Nav = () => {
           <a
             href="#contact"
             className="inline-flex items-center rounded-lg px-4 py-2 text-sm font-semibold text-white shadow"
-            style={{ backgroundColor: COLORS.gold }}
+            style={{ backgroundColor: COLORS.navy }}
           >
             Book a consult
           </a>
         </nav>
 
         <button
-          className="md:hidden inline-flex items-center justify-center rounded-lg border p-2 ml-auto"
+          className="md:hidden ml-auto inline-flex items-center justify-center rounded-lg border p-2"
           aria-label="Menu"
           onClick={() => setOpen(!open)}
         >
@@ -112,7 +109,7 @@ const Nav = () => {
           <a
             href="#contact"
             className="block rounded-lg px-4 py-2 text-center text-sm font-semibold text-white"
-            style={{ backgroundColor: COLORS.gold }}
+            style={{ backgroundColor: COLORS.navy }}
           >
             Book a consult
           </a>
@@ -122,15 +119,12 @@ const Nav = () => {
   );
 };
 
-/* ---------- Hero Banner ---------- */
+/* ---------- Hero Banner (with fallbacks, no crop) ---------- */
 function HeroBanner() {
   const candidates = ["/hero-banner-clean.png", "/hero-banner.png", "/hero.jpg"];
   const [idx, setIdx] = useState(0);
   const src = candidates[idx];
-
-  const handleError = () => {
-    if (idx < candidates.length - 1) setIdx(idx + 1);
-  };
+  const handleError = () => idx < candidates.length - 1 && setIdx(idx + 1);
 
   return (
     <section id="home" className="relative" style={{ backgroundColor: COLORS.navy }}>
@@ -140,7 +134,7 @@ function HeroBanner() {
 }
 
 /* ---------- Page ---------- */
-function App() {
+export default function App() {
   return (
     <div style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
       <Topbar />
@@ -159,9 +153,100 @@ function App() {
       </section>
 
       {/* SERVICES */}
-      {/* … keep your services, lenders, reviews, contact sections the same … */}
+      <section id="services" className="py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <SectionHeader kicker="What We Do" title="Mortgage Solutions" subtitle={BRAND.tagline} />
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { t: "First-home buyers", d: "Grants, deposits, borrowing power, lender policy." },
+              { t: "Refinance & repricing", d: "Lower rates, cash-backs, structure review." },
+              { t: "Investment loans", d: "Interest-only, splits, tax-smart structuring." },
+              { t: "Construction & reno", d: "Progress payments and build-specific policies." },
+              { t: "Self-employed", d: "Alt-doc solutions for complex income." },
+              { t: "Car & asset finance", d: "Fast approvals and competitive rates." },
+            ].map((c) => (
+              <div key={c.t} className="rounded-2xl bg-white p-6 shadow border border-slate-100">
+                <div className="h-10 w-10 rounded-lg flex items-center justify-center text-white" style={{ backgroundColor: COLORS.navy }}>
+                  <span className="text-lg">•</span>
+                </div>
+                <h3 className="mt-4 font-semibold text-lg">{c.t}</h3>
+                <p className="mt-2 text-slate-600">{c.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* LENDERS */}
+      <section id="lenders" className="py-16 bg-white border-t border-slate-200">
+        <div className="mx-auto max-w-6xl px-4 text-center">
+          <Kicker>A Selection From Our Panel of Lenders</Kicker>
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold">Access to Australia’s Leading Banks & Lenders</h2>
+
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
+            <Logo alt="Westpac"         srcs={["/logos/westpac.png", "/logos/bb.png"]} />
+            <Logo alt="Commonwealth"    srcs={["/logos/cba.png", "/logos/cbaa.png", "/logos/commonwealth.png"]} />
+            <Logo alt="ANZ"             srcs={["/logos/anz.png"]} />
+            <Logo alt="ING"             srcs={["/logos/ing.png", "/logos/ingg.png"]} />
+            <Logo alt="Suncorp"         srcs={["/logos/suncorp.png", "/logos/sc.png"]} />
+            <Logo alt="Macquarie"       srcs={["/logos/macquarie.png", "/logos/so.png"]} />
+            <Logo alt="Bank Australia / Bank of Melbourne" srcs={["/logos/bankaustralia.png", "/logos/bom.png"]} />
+            <Logo alt="Bankwest"        srcs={["/logos/bankwest.png", "/logos/bw.png"]} />
+            <Logo alt="AFG"             srcs={["/logos/afg.png", "/logos/afgh.png"]} />
+          </div>
+        </div>
+      </section>
+
+      {/* REVIEWS */}
+      <section id="reviews" className="py-20" style={{ backgroundColor: COLORS.paper }}>
+        <div className="mx-auto max-w-6xl px-4">
+          <SectionHeader kicker="Reviews" title="What our clients say" />
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {[
+              { name: "Sarah M.", text: "Rocky made refinancing simple and stress-free. Clear options, great rate." },
+              { name: "Daniel P.", text: "First-home journey felt easy. Professional, patient, and proactive." },
+              { name: "Melissa T.", text: "From application to settlement, everything was handled perfectly." },
+            ].map((r, i) => (
+              <div key={i} className="rounded-2xl bg-white p-6 shadow border border-slate-100">
+                <p className="text-yellow-500">★★★★★</p>
+                <p className="mt-2 text-slate-700 italic">“{r.text}”</p>
+                <p className="mt-3 font-semibold" style={{ color: COLORS.navy }}>— {r.name}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <a
+              href="https://g.page/r/YOUR-GOOGLE-REVIEW-LINK/review"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-lg px-6 py-3 font-semibold text-white"
+              style={{ backgroundColor: COLORS.navy }}
+            >
+              Leave a Google Review
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="relative py-16 text-white" style={{ background: `linear-gradient(135deg, ${COLORS.navy}, ${COLORS.navyDark})` }}>
+        <div className="mx-auto max-w-5xl px-4 text-center">
+          <Kicker>Get in Touch</Kicker>
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold">Speak with Us</h2>
+          <p className="mt-3 text-white/90">
+            Whether you’re buying, refinancing or investing — let’s map your next step with confidence.
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-4 text-lg">
+            <a href={`tel:${BRAND.phone}`} className="rounded-lg px-6 py-3 font-semibold text-white" style={{ backgroundColor: COLORS.navy, border: "1px solid rgba(255,255,255,.35)" }}>
+              Call {BRAND.phone}
+            </a>
+            <a href={`mailto:${BRAND.email}`} className="rounded-lg px-6 py-3 font-semibold text-white" style={{ border: "1px solid rgba(255,255,255,.7)" }}>
+              Email {BRAND.email}
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
-
-export default App;
