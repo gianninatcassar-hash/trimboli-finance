@@ -37,27 +37,22 @@ const Topbar = () => (
     className="w-full text-white"
     style={{ backgroundColor: COLORS.navyDark }}
   >
-    <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-      {/* Principal name in gold */}
-      <span className="text-sm font-medium" style={{ color: COLORS.gold }}>
-        By {BRAND.principal}
-      </span>
-
-      {/* Stack phone and email vertically on the right */}
+    <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-end">
+      {/* Phone + Email stacked vertically */}
       <div className="flex flex-col items-end gap-1">
-        {/* Phone number — always gold */}
+        {/* Phone number — always gold, no wrapping */}
         <a
           href={`tel:${BRAND.phone}`}
-          className="text-lg font-semibold"
+          className="text-xl font-bold whitespace-nowrap"
           style={{ color: COLORS.gold }}
         >
           📞 {BRAND.phone}
         </a>
 
-        {/* Email — white, turns gold on hover */}
+        {/* Email — white, gold on hover, no wrapping */}
         <a
           href={`mailto:${BRAND.email}`}
-          className="text-base font-semibold transition-colors"
+          className="text-base font-semibold transition-colors whitespace-nowrap"
           style={{ color: "white" }}
           onMouseEnter={(e) => (e.currentTarget.style.color = COLORS.gold)}
           onMouseLeave={(e) => (e.currentTarget.style.color = "white")}
