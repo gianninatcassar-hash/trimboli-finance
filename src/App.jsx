@@ -66,8 +66,8 @@ const Nav = () => {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-3">
-          <img src="/logo-horizontal-dark.svg" alt="Trimboli Finance" className="h-8 w-auto" />
+        <<a href="#home" className="text-lg font-bold text-slate-900">
+  Trimboli Finance
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
