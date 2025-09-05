@@ -3,31 +3,48 @@ import React, { useState } from "react";
 /* ---------- Brand & Theme ---------- */
 const BRAND = {
   name: "Trimboli Finance",
-  tagline: "Helping you secure the right loan, stress-free.",
+  tagline: "Mortgage solutions with clarity and care.",
   phone: "0433 068 076",
   email: "Rocky@trimbolifinance.com",
   principal: "Rocky Trimboli",
 };
 
-const NAVY = {
-  base: "#0b3b5a",
-  dark: "#07293f",
-  light: "#f8f9fb",
+const COLORS = {
+  navy: "#0b3b5a",
+  navyDark: "#07293f",
+  gold: "#c7a144",       // accent inspired by AMT style
+  ink: "#0f172a",
+  paper: "#f8f9fb",
 };
 
-const SectionHeading = ({ kicker, title, subtitle }) => (
+/* ---------- Small helpers ---------- */
+const Kicker = ({ children }) => (
+  <p className="uppercase tracking-[.2em] text-xs font-semibold" style={{ color: COLORS.gold }}>
+    {children}
+  </p>
+);
+
+const SectionHeader = ({ kicker, title, subtitle }) => (
   <div className="mx-auto max-w-3xl text-center">
-    {kicker && (
-      <p className="uppercase tracking-widest text-sm font-semibold" style={{ color: NAVY.base }}>
-        {kicker}
-      </p>
-    )}
+    {kicker && <Kicker>{kicker}</Kicker>}
     <h2 className="mt-2 text-3xl md:text-4xl font-bold text-slate-900">{title}</h2>
     {subtitle && <p className="mt-3 text-slate-600 leading-relaxed">{subtitle}</p>}
   </div>
 );
 
-/* ---------- Navigation ---------- */
+/* ---------- Topbar + Nav ---------- */
+const Topbar = () => (
+  <div className="w-full text-[13px] text-white" style={{ backgroundColor: COLORS.navyDark }}>
+    <div className="mx-auto max-w-7xl px-4 py-2 flex items-center justify-between">
+      <span>By {BRAND.principal}</span>
+      <div className="flex items-center gap-4">
+        <a href={`tel:${BRAND.phone}`} className="hover:underline">📞 {BRAND.phone}</a>
+        <a href={`mailto:${BRAND.email}`} className="hover:underline">✉️ {BRAND.email}</a>
+      </div>
+    </div>
+  </div>
+);
+
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const links = [
@@ -36,70 +53,53 @@ const Nav = () => {
     { href: "#reviews", label: "Reviews" },
     { href: "#contact", label: "Contact" },
   ];
+
   return (
-    <header
-      className="sticky top-0 z-40 border-b"
-      style={{ backdropFilter: "blur(8px)", backgroundColor: "rgba(255,255,255,0.85)", borderColor: "#e5e7eb" }}
-    >
+    <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-2">
-          <span
-            className="inline-flex size-9 items-center justify-center rounded-xl text-white font-bold"
-            style={{ backgroundColor: NAVY.base }}
-          >
-            T
-          </span>
-          <div>
-            <p className="font-semibold leading-tight">{BRAND.name}</p>
-            <p className="text-xs text-slate-500 -mt-0.5">By {BRAND.principal}</p>
-          </div>
+        <a href="#home" className="flex items-center gap-3">
+          {/* Use your wordmark or icon here */}
+          <img src="/logo-horizontal-dark.svg" alt="Trimboli Finance" className="h-8 w-auto" />
         </a>
-        <nav className="hidden md:flex items-center gap-6">
+
+        <nav className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm"
-              style={{ color: "#334155" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = NAVY.base)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#334155")}
+              className="text-sm font-medium text-slate-700 hover:text-slate-900"
             >
               {l.label}
             </a>
           ))}
           <a
             href="#contact"
-            className="inline-flex items-center rounded-xl px-4 py-2 text-sm font-semibold text-white shadow hover:shadow-md"
-            style={{ backgroundColor: NAVY.base }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = NAVY.dark)}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = NAVY.base)}
+            className="inline-flex items-center rounded-lg px-4 py-2 text-sm font-semibold text-white shadow"
+            style={{ backgroundColor: COLORS.gold }}
           >
-            Free consult
+            Book a consult
           </a>
         </nav>
+
         <button
-          className="md:hidden inline-flex items-center justify-center rounded-xl border p-2"
-          aria-label="Toggle menu"
+          className="md:hidden inline-flex items-center justify-center rounded-lg border p-2"
+          aria-label="Menu"
           onClick={() => setOpen(!open)}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5m-16.5 6.75h16.5m-16.5 6.75h16.5" />
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.75 5.25h16.5M3.75 12h16.5M3.75 18.75h16.5"/>
           </svg>
         </button>
       </div>
+
       {open && (
-        <div className="md:hidden bg-white border-t border-slate-200 px-4 py-3 space-y-2">
-          {links.map((l) => (
-            <a key={l.href} href={l.href} className="block text-sm" style={{ color: "#334155" }}>
-              {l.label}
-            </a>
+        <div className="md:hidden border-t border-slate-200 bg-white px-4 py-3 space-y-2">
+          {["#services","#lenders","#reviews","#contact"].map((href) => (
+            <a key={href} href={href} className="block text-sm text-slate-700">{href.replace("#","")}</a>
           ))}
-          <a
-            href="#contact"
-            className="block rounded-xl px-4 py-2 text-sm font-semibold text-center text-white shadow hover:shadow-md"
-            style={{ backgroundColor: NAVY.base }}
-          >
-            Free consult
+          <a href="#contact" className="block rounded-lg px-4 py-2 text-center text-sm text-white"
+             style={{ backgroundColor: COLORS.gold }}>
+            Book a consult
           </a>
         </div>
       )}
@@ -111,99 +111,118 @@ const Nav = () => {
 export default function App() {
   return (
     <div>
+      <Topbar />
       <Nav />
 
-      {/* Hero */}
-      <section id="home" className="py-20" style={{ backgroundColor: NAVY.light }}>
-        <div className="mx-auto max-w-3xl text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900">
-            Welcome to {BRAND.name}
-          </h1>
-          <p className="mt-4 text-lg text-slate-600">
-            At {BRAND.name}, led by {BRAND.principal}, we make home loans and refinancing simple, personal, and stress-free.
-          </p>
-          <div className="mt-6">
-            <a
-              href="#contact"
-              className="inline-flex items-center rounded-xl px-6 py-3 text-lg font-semibold text-white shadow hover:shadow-md"
-              style={{ backgroundColor: NAVY.base }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = NAVY.dark)}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = NAVY.base)}
-            >
-              Talk to Rocky today
-            </a>
+      {/* HERO — full bleed image with overlay and strong headline */}
+      <section id="home" className="relative">
+        <img src="/hero.jpg" alt="" className="h-[58vh] md:h-[70vh] w-full object-cover" />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(11,59,90,.55), rgba(11,59,90,.75))" }} />
+        <div className="absolute inset-0 flex items-center">
+          <div className="mx-auto max-w-5xl px-4 text-white">
+            <Kicker>Mortgage Broker • Melbourne</Kicker>
+            <h1 className="mt-2 text-4xl md:text-6xl font-bold leading-tight">
+              Finance made clear. <br className="hidden md:block" /> Results you can trust.
+            </h1>
+            <p className="mt-4 max-w-2xl text-white/90 text-lg">
+              {BRAND.tagline} From first-home to refinance and investments — we handle the legwork end-to-end.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a href="#contact" className="rounded-lg px-6 py-3 font-semibold text-slate-900" style={{ backgroundColor: COLORS.gold }}>
+                Book a consult
+              </a>
+              <a href="#services" className="rounded-lg px-6 py-3 font-semibold border border-white/70">
+                Our services
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Services */}
-      <section id="services" className="py-16" style={{ backgroundColor: NAVY.light }}>
+      {/* QUICK STRIP — key points */}
+      <section className="py-6" style={{ backgroundColor: COLORS.paper }}>
+        <div className="mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+          {[
+            "Access to 40+ lenders",
+            "Tailored options, clear guidance",
+            "We negotiate so you don’t have to",
+          ].map((txt) => (
+            <div key={txt} className="rounded-xl bg-white px-4 py-3 shadow-sm border border-slate-100">
+              <span className="text-sm font-medium text-slate-700">{txt}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SERVICES — card grid with icons */}
+      <section id="services" className="py-16">
         <div className="mx-auto max-w-6xl px-4">
-          <SectionHeading
-            kicker="What we do"
-            title="Mortgage solutions"
-            subtitle="First home, refinance, investment, construction, self-employed, and more."
+          <SectionHeader
+            kicker="What We Do"
+            title="Mortgage Solutions"
+            subtitle="Expert support across the full lending journey."
           />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { title: "First-home loans", body: "Deposit options, grants, and lender policy guidance." },
-              { title: "Refinancing", body: "Lower rates, cash-backs, and better features." },
-              { title: "Investment loans", body: "Structure, interest-only, and portfolio growth." },
-              { title: "Construction", body: "Progress payments and build-specific policies." },
-              { title: "Self-employed", body: "Alt-doc and solutions for complex income." },
-              { title: "Car & asset finance", body: "Fast approvals and competitive rates." },
+              { t: "First-home buyers", d: "Grants, deposits, borrowing power, lender policy." },
+              { t: "Refinance & repricing", d: "Lower rates, cash-backs, structure review." },
+              { t: "Investment loans", d: "Interest-only, splits, tax-smart structuring." },
+              { t: "Construction & reno", d: "Progress payments and build-specific policies." },
+              { t: "Self-employed", d: "Alt-doc solutions for complex income." },
+              { t: "Car & asset finance", d: "Fast approvals and competitive rates." },
             ].map((c) => (
-              <div key={c.title} className="rounded-2xl bg-white p-6 shadow hover:shadow-lg transition">
-                <h3 className="font-semibold text-lg text-slate-900">{c.title}</h3>
-                <p className="mt-2 text-slate-600">{c.body}</p>
+              <div key={c.t} className="rounded-2xl bg-white p-6 shadow border border-slate-100">
+                <div className="h-10 w-10 rounded-lg flex items-center justify-center text-white"
+                     style={{ backgroundColor: COLORS.navy }}>
+                  {/* simple icon dot */}
+                  <span className="text-lg">•</span>
+                </div>
+                <h3 className="mt-4 font-semibold text-lg">{c.t}</h3>
+                <p className="mt-2 text-slate-600">{c.d}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Lenders */}
+      {/* LENDERS — clean grid */}
       <section id="lenders" className="py-16 bg-white border-t border-slate-200">
         <div className="mx-auto max-w-6xl px-4 text-center">
-          <p className="uppercase tracking-widest text-sm font-semibold" style={{ color: NAVY.base }}>
-            A Selection From Our Panel of Lenders
-          </p>
-          <h2 className="mt-2 text-3xl md:text-4xl font-bold text-slate-900">
-            Access to Australia’s Leading Banks & Lenders
-          </h2>
+          <Kicker>A Selection From Our Panel of Lenders</Kicker>
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold">Access to Australia’s Leading Banks & Lenders</h2>
 
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
-            <img src="/logos/westpac.png"        alt="Westpac"           className="h-12 mx-auto" />
-            <img src="/logos/cba.png"            alt="Commonwealth Bank" className="h-12 mx-auto" />
-            <img src="/logos/anz.png"            alt="ANZ"               className="h-12 mx-auto" />
-            <img src="/logos/ing.png"            alt="ING"               className="h-12 mx-auto" />
-            <img src="/logos/suncorp.png"        alt="Suncorp"           className="h-12 mx-auto" />
-            <img src="/logos/macquarie.png"      alt="Macquarie"         className="h-12 mx-auto" />
-            <img src="/logos/bankaustralia.png"  alt="Bank Australia"    className="h-12 mx-auto" />
-            <img src="/logos/bankwest.png"       alt="Bankwest"          className="h-12 mx-auto" />
-            <img src="/logos/afg.png"            alt="AFG"               className="h-12 mx-auto" />
+            {[
+              { src: "/logos/westpac.png", alt: "Westpac" },
+              { src: "/logos/cba.png", alt: "Commonwealth Bank" },
+              { src: "/logos/anz.png", alt: "ANZ" },
+              { src: "/logos/ing.png", alt: "ING" },
+              { src: "/logos/suncorp.png", alt: "Suncorp" },
+              { src: "/logos/macquarie.png", alt: "Macquarie" },
+              { src: "/logos/bankaustralia.png", alt: "Bank Australia" },
+              { src: "/logos/bankwest.png", alt: "Bankwest" },
+              { src: "/logos/afg.png", alt: "AFG" },
+            ].map((l) => (
+              <img key={l.alt} src={l.src} alt={l.alt} className="h-12 mx-auto opacity-100" />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Reviews */}
-      <section id="reviews" className="py-20" style={{ backgroundColor: NAVY.light }}>
+      {/* REVIEWS — bold cards (keep manual text for now) */}
+      <section id="reviews" className="py-20" style={{ backgroundColor: COLORS.paper }}>
         <div className="mx-auto max-w-6xl px-4">
-          <SectionHeading
-            kicker="Reviews"
-            title="What our clients say"
-            subtitle={`Here’s what recent clients have said about working with ${BRAND.principal}.`}
-          />
+          <SectionHeader kicker="Reviews" title="What our clients say" />
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {[
-              { name: "Sarah M.", text: "Rocky made refinancing so simple. Clear explanations and a great rate." },
-              { name: "Daniel P.", text: "First-home buyer made easy. Professional, patient, and reassuring." },
-              { name: "Melissa T.", text: "Stress-free process from start to finish. Highly recommend." },
+              { name: "Sarah M.", text: "Rocky made refinancing simple and stress-free. Clear options, great rate." },
+              { name: "Daniel P.", text: "First-home journey felt easy. Professional, patient, and proactive." },
+              { name: "Melissa T.", text: "From application to settlement, everything was handled perfectly." },
             ].map((r, i) => (
-              <div key={i} className="rounded-2xl bg-white p-6 shadow">
+              <div key={i} className="rounded-2xl bg-white p-6 shadow border border-slate-100">
                 <p className="text-yellow-500">★★★★★</p>
                 <p className="mt-2 text-slate-700 italic">“{r.text}”</p>
-                <p className="mt-3 font-semibold" style={{ color: NAVY.base }}>— {r.name}</p>
+                <p className="mt-3 font-semibold" style={{ color: COLORS.navy }}>— {r.name}</p>
               </div>
             ))}
           </div>
@@ -211,10 +230,9 @@ export default function App() {
           <div className="mt-10 text-center">
             <a
               href="https://g.page/r/YOUR-GOOGLE-REVIEW-LINK/review"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center rounded-xl px-6 py-3 text-lg font-semibold text-white shadow hover:shadow-md"
-              style={{ backgroundColor: NAVY.base }}
+              target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center rounded-lg px-6 py-3 font-semibold text-slate-900"
+              style={{ backgroundColor: COLORS.gold }}
             >
               Leave a Google Review
             </a>
@@ -222,23 +240,18 @@ export default function App() {
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="py-20 bg-white border-t border-slate-200">
-        <div className="mx-auto max-w-3xl text-center">
-          <SectionHeading
-            kicker="Get in Touch"
-            title="Contact Rocky Trimboli"
-            subtitle="Whether you're buying your first home, refinancing, or investing, we're here to help."
-          />
-        </div>
-        <div className="mx-auto max-w-3xl mt-8 space-y-4 text-lg text-center">
-          <p>
-            📞{" "}
-            <a href={`tel:${BRAND.phone}`} className="font-semibold" style={{ color: NAVY.base }}>
-              {BRAND.phone}
-            </a>
+      {/* CONTACT — strong CTA panel */}
+      <section id="contact" className="relative py-16 text-white"
+               style={{ background: `linear-gradient(135deg, ${COLORS.navy}, ${COLORS.navyDark})` }}>
+        <div className="mx-auto max-w-5xl px-4 text-center">
+          <Kicker>Get in Touch</Kicker>
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold">Speak with {BRAND.principal}</h2>
+          <p className="mt-3 text-white/90">
+            Whether you’re buying, refinancing or investing — let’s map your next step with confidence.
           </p>
-          <p>
-            📧{" "}
-            <a href={`mailto:${BRAND.email}`} className="font-semibold" style={{ color: NAVY.base }}>
-              {BRAND.email
+          <div className="mt-6 flex flex-wrap justify-center gap-4 text-lg">
+            <a href={`tel:${BRAND.phone}`} className="rounded-lg px-6 py-3 font-semibold text-slate-900"
+               style={{ backgroundColor: COLORS.gold }}>
+              Call {BRAND.phone}
+            </a>
+            <a href={`mailto:${BRAND.email}`} className="rounded-lg px-6 py-3 font-semibold border border-white/70">
