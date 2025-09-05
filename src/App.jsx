@@ -11,7 +11,7 @@ const BRAND = {
 const COLORS = {
   navy: "#0b3b5a",
   navyDark: "#07293f",
-  gold: "#0b3b5a", // using navy as the accent color
+  gold: "#0b3b5a", // navy accent
   ink: "#0f172a",
   paper: "#f8f9fb",
 };
@@ -31,7 +31,7 @@ const SectionHeader = ({ kicker, title, subtitle }) => (
   </div>
 );
 
-/* Hide an <img> if every fallback fails */
+/* ---------- Logo fallback component ---------- */
 const Logo = ({ srcs, alt }) => {
   const [idx, setIdx] = useState(0);
   if (idx >= srcs.length) return null;
@@ -74,7 +74,6 @@ const Nav = () => {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-        {/* Brand text (no image) */}
         <a href="#home" className="text-lg font-bold text-slate-900">
           Trimboli Finance
         </a>
@@ -107,9 +106,9 @@ const Nav = () => {
 
       {open && (
         <div className="md:hidden border-t border-slate-200 bg-white px-4 py-3 space-y-2">
-          {["#services", "#lenders", "#reviews", "#contact"].map((href) => (
-            <a key={href} href={href} className="block text-sm text-slate-700">
-              {href.replace("#", "")}
+          {links.map((l) => (
+            <a key={l.href} href={l.href} className="block text-sm text-slate-700">
+              {l.label}
             </a>
           ))}
           <a
@@ -125,20 +124,30 @@ const Nav = () => {
   );
 };
 
+/* ---------- Hero Banner (with fallbacks) ---------- */
+function HeroBanner() {
+  const candidates = ["/hero-banner-clean.png", "/hero-banner.png", "/hero.jpg"];
+  const [idx, setIdx] = useState(0);
+  const src = candidates[idx];
+
+  const handleError = () => {
+    if (idx < candidates.length - 1) setIdx(idx + 1);
+  };
+
+  return (
+    <section id="home" className="relative" style={{ backgroundColor: COLORS.navy }}>
+      <img src={src} alt="Hero Banner" className="w-full h-auto block" onError={handleError} />
+    </section>
+  );
+}
+
 /* ---------- Page ---------- */
 function App() {
   return (
     <div style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
       <Topbar />
       <Nav />
-
-      {/* HERO BANNER (no text, fits fully) */}
-      <section id="home" className="relative">
-        <div
-          className="h-[70vh] md:h-[78vh] w-full bg-no-repeat bg-center bg-contain"
-          style={{ backgroundImage: "url(/hero-banner-clean.png)", backgroundColor: COLORS.navy }}
-        />
-      </section>
+      <HeroBanner />
 
       {/* QUICK STRIP */}
       <section className="py-6" style={{ backgroundColor: COLORS.paper }}>
@@ -182,17 +191,16 @@ function App() {
           <Kicker>A Selection From Our Panel of Lenders</Kicker>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold">Access to Australia’s Leading Banks & Lenders</h2>
 
-          {/* Supports multiple file-name variants for each logo */}
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
-            <Logo alt="Westpac"         srcs={["/logos/westpac.png", "/logos/bb.png"]} />
-            <Logo alt="Commonwealth"    srcs={["/logos/cba.png", "/logos/cbaa.png", "/logos/commonwealth.png"]} />
-            <Logo alt="ANZ"             srcs={["/logos/anz.png"]} />
-            <Logo alt="ING"             srcs={["/logos/ing.png", "/logos/ingg.png"]} />
-            <Logo alt="Suncorp"         srcs={["/logos/suncorp.png", "/logos/sc.png"]} />
-            <Logo alt="Macquarie"       srcs={["/logos/macquarie.png", "/logos/so.png"]} />
+            <Logo alt="Westpac" srcs={["/logos/westpac.png", "/logos/bb.png"]} />
+            <Logo alt="Commonwealth" srcs={["/logos/cba.png", "/logos/cbaa.png", "/logos/commonwealth.png"]} />
+            <Logo alt="ANZ" srcs={["/logos/anz.png"]} />
+            <Logo alt="ING" srcs={["/logos/ing.png", "/logos/ingg.png"]} />
+            <Logo alt="Suncorp" srcs={["/logos/suncorp.png", "/logos/sc.png"]} />
+            <Logo alt="Macquarie" srcs={["/logos/macquarie.png", "/logos/so.png"]} />
             <Logo alt="Bank Australia / Bank of Melbourne" srcs={["/logos/bankaustralia.png", "/logos/bom.png"]} />
-            <Logo alt="Bankwest"        srcs={["/logos/bankwest.png", "/logos/bw.png"]} />
-            <Logo alt="AFG"             srcs={["/logos/afg.png", "/logos/afgh.png"]} />
+            <Logo alt="Bankwest" srcs={["/logos/bankwest.png", "/logos/bw.png"]} />
+            <Logo alt="AFG" srcs={["/logos/afg.png", "/logos/afgh.png"]} />
           </div>
         </div>
       </section>
@@ -230,11 +238,7 @@ function App() {
       </section>
 
       {/* CONTACT */}
-      <section
-        id="contact"
-        className="relative py-16 text-white"
-        style={{ background: `linear-gradient(135deg, ${COLORS.navy}, ${COLORS.navyDark})` }}
-      >
+      <section id="contact" className="relative py-16 text-white" style={{ background: `linear-gradient(135deg, ${COLORS.navy}, ${COLORS.navyDark})` }}>
         <div className="mx-auto max-w-5xl px-4 text-center">
           <Kicker>Get in Touch</Kicker>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold">Speak with Us</h2>
@@ -242,18 +246,10 @@ function App() {
             Whether you’re buying, refinancing or investing — let’s map your next step with confidence.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4 text-lg">
-            <a
-              href={`tel:${BRAND.phone}`}
-              className="rounded-lg px-6 py-3 font-semibold text-white"
-              style={{ backgroundColor: COLORS.navy, border: "1px solid rgba(255,255,255,.35)" }}
-            >
+            <a href={`tel:${BRAND.phone}`} className="rounded-lg px-6 py-3 font-semibold text-white" style={{ backgroundColor: COLORS.navy, border: "1px solid rgba(255,255,255,.35)" }}>
               Call {BRAND.phone}
             </a>
-            <a
-              href={`mailto:${BRAND.email}`}
-              className="rounded-lg px-6 py-3 font-semibold text-white"
-              style={{ border: "1px solid rgba(255,255,255,.7)" }}
-            >
+            <a href={`mailto:${BRAND.email}`} className="rounded-lg px-6 py-3 font-semibold text-white" style={{ border: "1px solid rgba(255,255,255,.7)" }}>
               Email {BRAND.email}
             </a>
           </div>
