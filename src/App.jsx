@@ -37,13 +37,14 @@ const Topbar = () => (
     className="w-full text-white"
     style={{ backgroundColor: COLORS.navyDark }}
   >
-    <div className="mx-auto max-w-7xl px-4 py-2 flex items-center justify-between">
+    <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
       {/* Principal name in gold */}
       <span className="text-sm font-medium" style={{ color: COLORS.gold }}>
         By {BRAND.principal}
       </span>
 
-      <div className="flex items-center gap-6">
+      {/* Phone + Email stacked vertically */}
+      <div className="flex flex-col items-end gap-1">
         {/* Phone number — always gold */}
         <a
           href={`tel:${BRAND.phone}`}
@@ -56,7 +57,7 @@ const Topbar = () => (
         {/* Email — white, turns gold on hover */}
         <a
           href={`mailto:${BRAND.email}`}
-          className="text-lg font-semibold transition-colors"
+          className="text-base font-semibold transition-colors"
           style={{ color: "white" }}
           onMouseEnter={(e) => (e.currentTarget.style.color = COLORS.gold)}
           onMouseLeave={(e) => (e.currentTarget.style.color = "white")}
