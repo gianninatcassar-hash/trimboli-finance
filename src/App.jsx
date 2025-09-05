@@ -31,6 +31,20 @@ const SectionHeader = ({ kicker, title, subtitle }) => (
   </div>
 );
 
+/* Hide an <img> if every fallback fails */
+const Logo = ({ srcs, alt }) => {
+  const [idx, setIdx] = useState(0);
+  if (idx >= srcs.length) return null;
+  return (
+    <img
+      src={srcs[idx]}
+      alt={alt}
+      className="h-12 mx-auto"
+      onError={() => setIdx((i) => i + 1)}
+    />
+  );
+};
+
 /* ---------- Topbar ---------- */
 const Topbar = () => (
   <div className="w-full text-white" style={{ backgroundColor: COLORS.navyDark }}>
@@ -41,10 +55,8 @@ const Topbar = () => (
         </a>
         <a
           href={`mailto:${BRAND.email}`}
-          className="text-base font-semibold transition-colors whitespace-nowrap"
+          className="text-base font-semibold whitespace-nowrap"
           style={{ color: "white" }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = COLORS.navy)}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "white")}
         >
           ✉️ {BRAND.email}
         </a>
@@ -66,8 +78,9 @@ const Nav = () => {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-        <<a href="#home" className="text-lg font-bold text-slate-900">
-  Trimboli Finance
+        {/* Removed broken logo image, using brand text instead */}
+        <a href="#home" className="text-lg font-bold text-slate-900">
+          Trimboli Finance
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -79,7 +92,7 @@ const Nav = () => {
           <a
             href="#contact"
             className="inline-flex items-center rounded-lg px-4 py-2 text-sm font-semibold text-white shadow"
-            style={{ backgroundColor: COLORS.navy }}
+            style={{ backgroundColor: COLORS.gold }}
           >
             Book a consult
           </a>
@@ -103,7 +116,11 @@ const Nav = () => {
               {href.replace("#", "")}
             </a>
           ))}
-          <a href="#contact" className="block rounded-lg px-4 py-2 text-center text-sm text-white" style={{ backgroundColor: COLORS.navy }}>
+          <a
+            href="#contact"
+            className="block rounded-lg px-4 py-2 text-center text-sm font-semibold text-white"
+            style={{ backgroundColor: COLORS.gold }}
+          >
             Book a consult
           </a>
         </div>
@@ -115,26 +132,22 @@ const Nav = () => {
 /* ---------- Page ---------- */
 function App() {
   return (
-    <div>
+    <div style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
       <Topbar />
       <Nav />
 
-      {/* HERO BANNER */}
+      {/* HERO BANNER (fit image, no crop) */}
       <section id="home" className="relative">
         <div
           className="h-[70vh] md:h-[78vh] w-full bg-no-repeat bg-center bg-contain"
-          style={{ backgroundImage: "url(/hero-banner.png)", backgroundColor: "#0b3b5a" }}
+          style={{ backgroundImage: "url(/hero-banner.png)", backgroundColor: COLORS.navy }}
         />
       </section>
 
       {/* QUICK STRIP */}
       <section className="py-6" style={{ backgroundColor: COLORS.paper }}>
         <div className="mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-          {[
-            "Access to 40+ lenders",
-            "Tailored options, clear guidance",
-            "We negotiate so you don’t have to",
-          ].map((txt) => (
+          {["Access to 40+ lenders","Tailored options, clear guidance","We negotiate so you don’t have to"].map((txt) => (
             <div key={txt} className="rounded-xl bg-white px-4 py-3 shadow-sm border border-slate-100">
               <span className="text-sm font-medium text-slate-700">{txt}</span>
             </div>
@@ -172,20 +185,18 @@ function App() {
         <div className="mx-auto max-w-6xl px-4 text-center">
           <Kicker>A Selection From Our Panel of Lenders</Kicker>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold">Access to Australia’s Leading Banks & Lenders</h2>
+
+          {/* Supports multiple file-name variants for each logo */}
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
-            {[
-              { src: "/logos/bb.png", alt: "Westpac" },
-              { src: "/logos/cbaa.png", alt: "Commonwealth Bank" },
-              { src: "/logos/anz.png", alt: "ANZ" },
-              { src: "/logos/ingg.png", alt: "ING" },
-              { src: "/logos/sc.png", alt: "Suncorp" },
-              { src: "/logos/so.png", alt: "Macquarie" },
-              { src: "/logos/bom.png", alt: "Bankwest" },
-              { src: "/logos/bw.png", alt: "AFG" },
-              { src: "/logos/afgh.png", alt: "AFG" },
-            ].map((l) => (
-              <img key={l.alt} src={l.src} alt={l.alt} className="h-12 mx-auto opacity-100" />
-            ))}
+            <Logo alt="Westpac"         srcs={["/logos/bb.png", "/logos/westpac.png"]} />
+            <Logo alt="Commonwealth"    srcs={["/logos/cbaa.png", "/logos/cba.png", "/logos/commonwealth.png"]} />
+            <Logo alt="ANZ"             srcs={["/logos/anz.png"]} />
+            <Logo alt="ING"             srcs={["/logos/ingg.png", "/logos/ing.png"]} />
+            <Logo alt="Suncorp"         srcs={["/logos/sc.png", "/logos/suncorp.png"]} />
+            <Logo alt="Macquarie"       srcs={["/logos/so.png", "/logos/macquarie.png"]} />
+            <Logo alt="Bank of Melbourne / Bank Australia" srcs={["/logos/bom.png", "/logos/bankaustralia.png", "/logos/bank-of-melbourne.png"]} />
+            <Logo alt="Bankwest"        srcs={["/logos/bw.png", "/logos/bankwest.png"]} />
+            <Logo alt="AFG"             srcs={["/logos/afgh.png", "/logos/afg.png"]} />
           </div>
         </div>
       </section>
@@ -211,8 +222,9 @@ function App() {
           <div className="mt-10 text-center">
             <a
               href="https://g.page/r/YOUR-GOOGLE-REVIEW-LINK/review"
-              target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center rounded-lg px-6 py-3 font-semibold text-slate-900"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-lg px-6 py-3 font-semibold text-white"
               style={{ backgroundColor: COLORS.navy }}
             >
               Leave a Google Review
@@ -222,7 +234,11 @@ function App() {
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="relative py-16 text-white" style={{ background: `linear-gradient(135deg, ${COLORS.navy}, ${COLORS.navyDark})` }}>
+      <section
+        id="contact"
+        className="relative py-16 text-white"
+        style={{ background: `linear-gradient(135deg, ${COLORS.navy}, ${COLORS.navyDark})` }}
+      >
         <div className="mx-auto max-w-5xl px-4 text-center">
           <Kicker>Get in Touch</Kicker>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold">Speak with Us</h2>
@@ -230,10 +246,18 @@ function App() {
             Whether you’re buying, refinancing or investing — let’s map your next step with confidence.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4 text-lg">
-            <a href={`tel:${BRAND.phone}`} className="rounded-lg px-6 py-3 font-semibold text-slate-900" style={{ backgroundColor: COLORS.navy }}>
+            <a
+              href={`tel:${BRAND.phone}`}
+              className="rounded-lg px-6 py-3 font-semibold text-white"
+              style={{ backgroundColor: COLORS.navy, border: "1px solid rgba(255,255,255,.35)" }}
+            >
               Call {BRAND.phone}
             </a>
-            <a href={`mailto:${BRAND.email}`} className="rounded-lg px-6 py-3 font-semibold border border-white/70">
+            <a
+              href={`mailto:${BRAND.email}`}
+              className="rounded-lg px-6 py-3 font-semibold text-white"
+              style={{ border: "1px solid rgba(255,255,255,.7)" }}
+            >
               Email {BRAND.email}
             </a>
           </div>
