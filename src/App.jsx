@@ -198,7 +198,7 @@ function App() {
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
             {[
               { src: "/logos/westpac.png", alt: "Westpac" },
-              { src: "/logos/cba.png", alt: "Commonwealth Bank" },
+              { src: "/logos/cbaa.png", alt: "Commonwealth Bank" },
               { src: "/logos/anz.png", alt: "ANZ" },
               { src: "/logos/ingg.png", alt: "ING" },
               { src: "/logos/sc.png", alt: "Suncorp" },
