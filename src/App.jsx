@@ -4,8 +4,8 @@ import React, { useState } from "react";
 const BRAND = {
   name: "Trimboli Finance",
   tagline: "Mortgage solutions with clarity and care.",
-  phone: "0433 068 076",
-  email: "Rocky@trimbolifinance.com",
+  phone: "0432 068 076",
+  email: "Rocky@trimbolifinance.com.au",
   principal: "Rocky Trimboli",
 };
 
