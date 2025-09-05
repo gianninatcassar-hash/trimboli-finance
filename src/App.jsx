@@ -197,7 +197,7 @@ function App() {
           <h2 className="mt-2 text-3xl md:text-4xl font-bold">Access to Australia’s Leading Banks & Lenders</h2>
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
             {[
-              { src: "/logos/westpac.png", alt: "Westpac" },
+              { src: "/logos/bb.png", alt: "Westpac" },
               { src: "/logos/cbaa.png", alt: "Commonwealth Bank" },
               { src: "/logos/anz.png", alt: "ANZ" },
               { src: "/logos/ingg.png", alt: "ING" },
