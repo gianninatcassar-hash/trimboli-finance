@@ -152,34 +152,63 @@ export default function App() {
         </div>
       </section>
 
-      {/* SERVICES */}
-<section id="services" className="py-16">
-  <div className="mx-auto max-w-6xl px-4">
-    <SectionHeader
-      kicker="What We Do"
-      title="Mortgage Solutions"
-      subtitle="Expert support across the full lending journey."
-    />
-    <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {[
-        { t: "First-home buyers", d: "Grants, deposits, borrowing power, lender policy.", img: "/photos/first-home.png" },
-        { t: "Refinance & repricing", d: "Lower rates, cash-backs, structure review.", img: "/photos/refinance.png" },
-        { t: "Investment loans", d: "Interest-only, splits, tax-smart structuring.", img: "/photos/investment.png" },
-        { t: "Construction & reno", d: "Progress payments and build-specific policies.", img: "/photos/construction.png" },
-        { t: "Self-employed", d: "Alt-doc solutions for complex income.", img: "/photos/self-employed.png" },
-        { t: "Car & asset finance", d: "Fast approvals and competitive rates.", img: "/photos/car.png" },
-      ].map((c) => (
-        <div key={c.t} className="rounded-2xl bg-white shadow border border-slate-100 overflow-hidden">
-          <img src={c.img} alt={c.t} className="w-full h-40 object-cover" />
-          <div className="p-6">
-            <h3 className="font-semibold text-lg">{c.t}</h3>
-            <p className="mt-2 text-slate-600">{c.d}</p>
+            {/* SERVICES */}
+      <section id="services" className="py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <SectionHeader
+            kicker="What We Do"
+            title="Mortgage Solutions"
+            subtitle="Expert support across the full lending journey."
+          />
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                t: "First-home buyers",
+                d: "Grants, deposits, borrowing power, lender policy.",
+                img: "/first-home.png",
+              },
+              {
+                t: "Refinance & repricing",
+                d: "Lower rates, cash-backs, structure review.",
+                img: "/refinance.png",
+              },
+              {
+                t: "Investment loans",
+                d: "Interest-only, splits, tax-smart structuring.",
+                img: "/investment.png",
+              },
+              {
+                t: "Construction & reno",
+                d: "Progress payments and build-specific policies.",
+                img: "/construction-loan.png",
+              },
+              {
+                t: "Self-employed",
+                d: "Alt-doc solutions for complex income.",
+                img: "/self-employed.png",
+              },
+              {
+                t: "Car & asset finance",
+                d: "Fast approvals and competitive rates.",
+                img: "/car.png",
+              },
+            ].map((c) => (
+              <div
+                key={c.t}
+                className="rounded-2xl bg-white p-6 shadow border border-slate-100 text-center"
+              >
+                <img
+                  src={c.img}
+                  alt={c.t}
+                  className="h-20 w-auto mx-auto mb-4 object-contain"
+                />
+                <h3 className="mt-2 font-semibold text-lg">{c.t}</h3>
+                <p className="mt-2 text-slate-600">{c.d}</p>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* LENDERS */}
       <section id="lenders" className="py-16 bg-white border-t border-slate-200">
