@@ -200,7 +200,7 @@ function App() {
               { src: "/logos/westpac.png", alt: "Westpac" },
               { src: "/logos/cba.png", alt: "Commonwealth Bank" },
               { src: "/logos/anz.png", alt: "ANZ" },
-              { src: "/logos/ing.png", alt: "ING" },
+              { src: "/logos/ingg.png", alt: "ING" },
               { src: "/logos/suncorp.png", alt: "Suncorp" },
               { src: "/logos/macquarie.png", alt: "Macquarie" },
               { src: "/logos/bom.png", alt: "Bank of Melbourne" },
