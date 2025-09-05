@@ -32,14 +32,37 @@ const SectionHeader = ({ kicker, title, subtitle }) => (
   </div>
 );
 
-/* ---------- Topbar + Nav ---------- */
 const Topbar = () => (
-  <div className="w-full text-[13px] text-white" style={{ backgroundColor: COLORS.navyDark }}>
+  <div
+    className="w-full text-white"
+    style={{ backgroundColor: COLORS.navyDark }}
+  >
     <div className="mx-auto max-w-7xl px-4 py-2 flex items-center justify-between">
-      <span>By {BRAND.principal}</span>
-      <div className="flex items-center gap-4">
-        <a href={`tel:${BRAND.phone}`} className="hover:underline">📞 {BRAND.phone}</a>
-        <a href={`mailto:${BRAND.email}`} className="hover:underline">✉️ {BRAND.email}</a>
+      {/* Principal name in gold */}
+      <span className="text-sm font-medium" style={{ color: COLORS.gold }}>
+        By {BRAND.principal}
+      </span>
+
+      <div className="flex items-center gap-6">
+        {/* Phone number — always gold */}
+        <a
+          href={`tel:${BRAND.phone}`}
+          className="text-lg font-semibold"
+          style={{ color: COLORS.gold }}
+        >
+          📞 {BRAND.phone}
+        </a>
+
+        {/* Email — white, turns gold on hover */}
+        <a
+          href={`mailto:${BRAND.email}`}
+          className="text-lg font-semibold transition-colors"
+          style={{ color: "white" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = COLORS.gold)}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "white")}
+        >
+          ✉️ {BRAND.email}
+        </a>
       </div>
     </div>
   </div>
