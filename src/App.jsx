@@ -1,5 +1,18 @@
 import React, { useState } from "react";
 
+function App() {
+  // your component logic here
+  return (
+    <section>
+      <div>
+        {/* Your JSX code */}
+      </div>
+    </section>
+  );
+}
+
+export default App;
+
 /* ---------- Brand & Theme ---------- */
 const BRAND = {
   name: "Trimboli Finance",
