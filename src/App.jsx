@@ -43,7 +43,7 @@ const Topbar = () => (
         By {BRAND.principal}
       </span>
 
-      {/* Phone + Email stacked vertically */}
+      {/* Stack phone and email vertically on the right */}
       <div className="flex flex-col items-end gap-1">
         {/* Phone number — always gold */}
         <a
@@ -57,6 +57,17 @@ const Topbar = () => (
         {/* Email — white, turns gold on hover */}
         <a
           href={`mailto:${BRAND.email}`}
+          className="text-base font-semibold transition-colors"
+          style={{ color: "white" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = COLORS.gold)}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "white")}
+        >
+          ✉️ {BRAND.email}
+        </a>
+      </div>
+    </div>
+  </div>
+);
           className="text-base font-semibold transition-colors"
           style={{ color: "white" }}
           onMouseEnter={(e) => (e.currentTarget.style.color = COLORS.gold)}
