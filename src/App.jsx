@@ -1,18 +1,5 @@
 import React, { useState } from "react";
 
-function App() {
-  // your component logic here
-  return (
-    <section>
-      <div>
-        {/* Your JSX code */}
-      </div>
-    </section>
-  );
-}
-
-export default App;
-
 /* ---------- Brand & Theme ---------- */
 const BRAND = {
   name: "Trimboli Finance",
@@ -25,7 +12,7 @@ const BRAND = {
 const COLORS = {
   navy: "#0b3b5a",
   navyDark: "#07293f",
-  gold: "#c7a144",       // accent inspired by AMT style
+  gold: "#c7a144",
   ink: "#0f172a",
   paper: "#f8f9fb",
 };
@@ -71,17 +58,12 @@ const Nav = () => {
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
         <a href="#home" className="flex items-center gap-3">
-          {/* Use your wordmark or icon here */}
           <img src="/logo-horizontal-dark.svg" alt="Trimboli Finance" className="h-8 w-auto" />
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm font-medium text-slate-700 hover:text-slate-900"
-            >
+            <a key={l.href} href={l.href} className="text-sm font-medium text-slate-700 hover:text-slate-900">
               {l.label}
             </a>
           ))}
@@ -107,11 +89,12 @@ const Nav = () => {
 
       {open && (
         <div className="md:hidden border-t border-slate-200 bg-white px-4 py-3 space-y-2">
-          {["#services","#lenders","#reviews","#contact"].map((href) => (
-            <a key={href} href={href} className="block text-sm text-slate-700">{href.replace("#","")}</a>
+          {["#services", "#lenders", "#reviews", "#contact"].map((href) => (
+            <a key={href} href={href} className="block text-sm text-slate-700">
+              {href.replace("#", "")}
+            </a>
           ))}
-          <a href="#contact" className="block rounded-lg px-4 py-2 text-center text-sm text-white"
-             style={{ backgroundColor: COLORS.gold }}>
+          <a href="#contact" className="block rounded-lg px-4 py-2 text-center text-sm text-white" style={{ backgroundColor: COLORS.gold }}>
             Book a consult
           </a>
         </div>
@@ -121,13 +104,13 @@ const Nav = () => {
 };
 
 /* ---------- Page ---------- */
-export default function App() {
+function App() {
   return (
     <div>
       <Topbar />
       <Nav />
 
-      {/* HERO — full bleed image with overlay and strong headline */}
+      {/* HERO */}
       <section id="home" className="relative">
         <img src="/hero.jpg" alt="" className="h-[58vh] md:h-[70vh] w-full object-cover" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(11,59,90,.55), rgba(11,59,90,.75))" }} />
@@ -152,7 +135,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* QUICK STRIP — key points */}
+      {/* QUICK STRIP */}
       <section className="py-6" style={{ backgroundColor: COLORS.paper }}>
         <div className="mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
           {[
@@ -167,14 +150,10 @@ export default function App() {
         </div>
       </section>
 
-      {/* SERVICES — card grid with icons */}
+      {/* SERVICES */}
       <section id="services" className="py-16">
         <div className="mx-auto max-w-6xl px-4">
-          <SectionHeader
-            kicker="What We Do"
-            title="Mortgage Solutions"
-            subtitle="Expert support across the full lending journey."
-          />
+          <SectionHeader kicker="What We Do" title="Mortgage Solutions" subtitle="Expert support across the full lending journey." />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { t: "First-home buyers", d: "Grants, deposits, borrowing power, lender policy." },
@@ -185,9 +164,7 @@ export default function App() {
               { t: "Car & asset finance", d: "Fast approvals and competitive rates." },
             ].map((c) => (
               <div key={c.t} className="rounded-2xl bg-white p-6 shadow border border-slate-100">
-                <div className="h-10 w-10 rounded-lg flex items-center justify-center text-white"
-                     style={{ backgroundColor: COLORS.navy }}>
-                  {/* simple icon dot */}
+                <div className="h-10 w-10 rounded-lg flex items-center justify-center text-white" style={{ backgroundColor: COLORS.navy }}>
                   <span className="text-lg">•</span>
                 </div>
                 <h3 className="mt-4 font-semibold text-lg">{c.t}</h3>
@@ -198,12 +175,11 @@ export default function App() {
         </div>
       </section>
 
-      {/* LENDERS — clean grid */}
+      {/* LENDERS */}
       <section id="lenders" className="py-16 bg-white border-t border-slate-200">
         <div className="mx-auto max-w-6xl px-4 text-center">
           <Kicker>A Selection From Our Panel of Lenders</Kicker>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold">Access to Australia’s Leading Banks & Lenders</h2>
-
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
             {[
               { src: "/logos/westpac.png", alt: "Westpac" },
@@ -222,7 +198,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* REVIEWS — bold cards (keep manual text for now) */}
+      {/* REVIEWS */}
       <section id="reviews" className="py-20" style={{ backgroundColor: COLORS.paper }}>
         <div className="mx-auto max-w-6xl px-4">
           <SectionHeader kicker="Reviews" title="What our clients say" />
@@ -253,9 +229,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* CONTACT — strong CTA panel */}
-      <section id="contact" className="relative py-16 text-white"
-               style={{ background: `linear-gradient(135deg, ${COLORS.navy}, ${COLORS.navyDark})` }}>
+      {/* CONTACT */}
+      <section id="contact" className="relative py-16 text-white" style={{ background: `linear-gradient(135deg, ${COLORS.navy}, ${COLORS.navyDark})` }}>
         <div className="mx-auto max-w-5xl px-4 text-center">
           <Kicker>Get in Touch</Kicker>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold">Speak with {BRAND.principal}</h2>
@@ -263,8 +238,17 @@ export default function App() {
             Whether you’re buying, refinancing or investing — let’s map your next step with confidence.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4 text-lg">
-            <a href={`tel:${BRAND.phone}`} className="rounded-lg px-6 py-3 font-semibold text-slate-900"
-               style={{ backgroundColor: COLORS.gold }}>
+            <a href={`tel:${BRAND.phone}`} className="rounded-lg px-6 py-3 font-semibold text-slate-900" style={{ backgroundColor: COLORS.gold }}>
               Call {BRAND.phone}
             </a>
             <a href={`mailto:${BRAND.email}`} className="rounded-lg px-6 py-3 font-semibold border border-white/70">
+              Email {BRAND.email}
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default App;
