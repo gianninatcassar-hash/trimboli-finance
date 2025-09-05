@@ -203,7 +203,7 @@ function App() {
               { src: "/logos/ing.png", alt: "ING" },
               { src: "/logos/suncorp.png", alt: "Suncorp" },
               { src: "/logos/macquarie.png", alt: "Macquarie" },
-              { src: "/logos/bankaustralia.png", alt: "Bank Australia" },
+              { src: "/logos/bom.png", alt: "Bank of Melbourne" },
               { src: "/logos/bankwest.png", alt: "Bankwest" },
               { src: "/logos/afg.png", alt: "AFG" },
             ].map((l) => (
