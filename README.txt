@@ -17,3 +17,4 @@ How to upload:
 3. Upload all these PNG files into 'public/logos/'.
 4. Commit changes.
 5. Vercel will redeploy automatically, and the logos will appear on your site.
+dummy
