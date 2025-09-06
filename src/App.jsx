@@ -136,7 +136,9 @@ function App() {
         />
       </section>
 
-      {{/* WHAT WE DO */}
+{/* ─────────────────────────── */}
+{/* 1) WHAT WE DO */}
+{/* ─────────────────────────── */}
 <section id="services" className="py-16">
   <div className="mx-auto max-w-6xl px-4">
     <SectionHeader
@@ -144,59 +146,26 @@ function App() {
       title="Mortgage Solutions"
       subtitle="Expert support across the full lending journey."
     />
-
     <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {[
-        {
-          t: "First-home buyers",
-          d: "Grants, deposits, borrowing power, lender policy.",
-          img: "/first-home.png",
-          alt: "First-home buyers"
-        },
-        {
-          t: "Refinance & repricing",
-          d: "Lower rates, cash-backs, structure review.",
-          img: "/refinance.png",
-          alt: "Refinance and repricing"
-        },
-        {
-          t: "Investment loans",
-          d: "Interest-only, splits, tax-smart structuring.",
-          img: "/investment.png",
-          alt: "Investment loans"
-        },
-        {
-          t: "Construction & reno",
-          d: "Progress payments and build-specific policies.",
-          img: "/construction-loan.png",
-          alt: "Construction and renovation loans"
-        },
-        {
-          t: "Self-employed",
-          d: "Alt-doc solutions for complex income.",
-          img: "/self-employed.png",
-          alt: "Self-employed lending"
-        },
-        {
-          t: "Car & asset finance",
-          d: "Fast approvals and competitive rates.",
-          img: "/car.png",
-          alt: "Car and asset finance"
-        }
+        { t: "First-home buyers", d: "Grants, deposits, borrowing power, lender policy.", img: "/first-home.png" },
+        { t: "Refinance & repricing", d: "Lower rates, cash-backs, structure review.", img: "/refinance.png" },
+        { t: "Investment loans", d: "Interest-only, splits, tax-smart structuring.", img: "/investment.png" },
+        { t: "Construction & reno", d: "Progress payments and build-specific policies.", img: "/construction-loan.png" },
+        { t: "Self-employed", d: "Alt-doc solutions for complex income.", img: "/self-employed.png" },
+        { t: "Car & asset finance", d: "Fast approvals and competitive rates.", img: "/car.png" },
       ].map((c) => (
-        <article
-          key={c.t}
-          className="overflow-hidden rounded-2xl bg-white shadow border border-slate-100"
-        >
-          {/* Image */}
-          <div className="aspect-[16/9] w-full bg-slate-100">
-            <img
-              src={c.img}
-              alt={c.alt}
-              loading="lazy"
-              className="h-full w-full object-cover"
-            />
-          </div>
+        <div key={c.t} className="rounded-2xl bg-white p-6 shadow border border-slate-100">
+          {c.img && (
+            <img src={c.img} alt={c.t} className="h-36 w-full object-cover rounded-lg mb-4" />
+          )}
+          <h3 className="mt-4 font-semibold text-lg">{c.t}</h3>
+          <p className="mt-2 text-slate-600">{c.d}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
           {/* Content */}
           <div className="p-6">
