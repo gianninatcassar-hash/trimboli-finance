@@ -136,86 +136,85 @@ function App() {
         />
       </section>
 
-      {/* ─────────────────────────── */}
-      {/* 1) WHAT WE DO — moved up  */}
-      {/* ─────────────────────────── */}
-      <section id="services" className="py-16">
-        <div className="mx-auto max-w-6xl px-4">
-          <SectionHeader
-            kicker="What We Do"
-            title="Mortgage Solutions"
-            subtitle="Expert support across the full lending journey."
-          />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { t: "First-home buyers", d: "Grants, deposits, borrowing power, lender policy.", img: "/photos/first-home.png" },
-              { t: "Refinance & repricing", d: "Lower rates, cash-backs, structure review.", img: "/photos/refinance.png" },
-              { t: "Investment loans", d: "Interest-only, splits, tax-smart structuring.", img: "/photos/investment.png" },
-              { t: "Construction & reno", d: "Progress payments and build-specific policies.", img: "/photos/construction-loan.png" },
-              { t: "Self-employed", d: "Alt-doc solutions for complex income.", img: "/photos/self-employed.png" },
-              { t: "Car & asset finance", d: "Fast approvals and competitive rates.", img: "/photos/car.png" },
-            ].map((c) => (
-              <div key={c.t} className="rounded-2xl bg-white p-6 shadow border border-slate-100">
-                {c.img && (
-                  <img src={c.img} alt="" className="h-36 w-full object-cover rounded-lg mb-4" />
-                )}
-                <div className="h-10 w-10 rounded-lg flex items-center justify-center text-white" style={{ backgroundColor: COLORS.navy }}>
-                  <span className="text-lg">•</span>
-                </div>
-                <h3 className="mt-4 font-semibold text-lg">{c.t}</h3>
-                <p className="mt-2 text-slate-600">{c.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {{/* WHAT WE DO */}
+<section id="services" className="py-16">
+  <div className="mx-auto max-w-6xl px-4">
+    <SectionHeader
+      kicker="What We Do"
+      title="Mortgage Solutions"
+      subtitle="Expert support across the full lending journey."
+    />
 
-      {/* 2) QUICK STRIP — now below services */}
-      <section className="py-6" style={{ backgroundColor: COLORS.paper }}>
-        <div className="mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-          {[
-            "Access to 40+ trusted lenders giving you choice and flexibility.",
-            "Tailored loan options and expert guidance every step of the way.",
-            "We negotiate to secure the best rate and help you take advantage of cash-back offers.",
-          ].map((txt) => (
-            <div key={txt} className="rounded-xl bg-white px-4 py-4 shadow-sm border border-slate-100">
-              <span className="text-base font-medium text-slate-700">{txt}</span>
+    <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {[
+        {
+          t: "First-home buyers",
+          d: "Grants, deposits, borrowing power, lender policy.",
+          img: "/first-home.png",
+          alt: "First-home buyers"
+        },
+        {
+          t: "Refinance & repricing",
+          d: "Lower rates, cash-backs, structure review.",
+          img: "/refinance.png",
+          alt: "Refinance and repricing"
+        },
+        {
+          t: "Investment loans",
+          d: "Interest-only, splits, tax-smart structuring.",
+          img: "/investment.png",
+          alt: "Investment loans"
+        },
+        {
+          t: "Construction & reno",
+          d: "Progress payments and build-specific policies.",
+          img: "/construction-loan.png",
+          alt: "Construction and renovation loans"
+        },
+        {
+          t: "Self-employed",
+          d: "Alt-doc solutions for complex income.",
+          img: "/self-employed.png",
+          alt: "Self-employed lending"
+        },
+        {
+          t: "Car & asset finance",
+          d: "Fast approvals and competitive rates.",
+          img: "/car.png",
+          alt: "Car and asset finance"
+        }
+      ].map((c) => (
+        <article
+          key={c.t}
+          className="overflow-hidden rounded-2xl bg-white shadow border border-slate-100"
+        >
+          {/* Image */}
+          <div className="aspect-[16/9] w-full bg-slate-100">
+            <img
+              src={c.img}
+              alt={c.alt}
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+          </div>
+
+          {/* Content */}
+          <div className="p-6">
+            <div
+              className="h-10 w-10 rounded-lg flex items-center justify-center text-white"
+              style={{ backgroundColor: COLORS.navy }}
+            >
+              <span className="text-lg">•</span>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* LENDERS (with new logos added) */}
-      <section id="lenders" className="py-16 bg-white border-t border-slate-200">
-        <div className="mx-auto max-w-6xl px-4 text-center">
-          <Kicker>A Selection From Our Panel of Lenders</Kicker>
-          <h2 className="mt-2 text-3xl md:text-4xl font-bold">Access to Australia’s Leading Banks & Lenders</h2>
-
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
-            {[
-              { src: "/logos/bb.png", alt: "Westpac" },
-              { src: "/logos/cbaa.png", alt: "Commonwealth Bank" },
-              { src: "/logos/anz.png", alt: "ANZ" },
-              { src: "/logos/ingg.png", alt: "ING" },
-              { src: "/logos/sc.png", alt: "Suncorp" },
-              { src: "/logos/so.png", alt: "Macquarie (old)" },
-              { src: "/logos/bom.png", alt: "Bank of Melbourne" },
-              { src: "/logos/bw.png", alt: "Bankwest" },
-              { src: "/logos/afgh.png", alt: "AFG" },
-              // NEW ONES
-              { src: "/logos/hsbc.png", alt: "HSBC" },
-              { src: "/logos/red.png", alt: "RedZed" },
-              { src: "/logos/liberty.png", alt: "Liberty" },
-              { src: "/logos/amp.png", alt: "AMP" },
-              { src: "/logos/rest.png", alt: "Resimac" },
-              { src: "/logos/mac.png", alt: "Macquarie (new)" },
-            ].map((l) => (
-              <img key={l.alt} src={l.src} alt={l.alt} className="h-12 mx-auto opacity-100" />
-            ))}
+            <h3 className="mt-4 font-semibold text-lg">{c.t}</h3>
+            <p className="mt-2 text-slate-600">{c.d}</p>
           </div>
-        </div>
-      </section>
-
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+    
       {/* REVIEWS */}
       <section id="reviews" className="py-20" style={{ backgroundColor: COLORS.paper }}>
         <div className="mx-auto max-w-6xl px-4">
