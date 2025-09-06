@@ -140,28 +140,8 @@ export default function App() {
       <Topbar />
       <Nav />
       <HeroBanner />
-
-      {/* QUICK STRIP */}
-      <section className="py-8" style={{ backgroundColor: COLORS.paper }}>
-        <div className="mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-          {[
-            "Access to 40+ trusted lenders giving you choice and flexibility.",
-            "Tailored loan options and expert guidance every step of the way.",
-            "We negotiate to secure the best rate and help you take advantage of cash-back offers.",
-          ].map((txt) => (
-            <div
-              key={txt}
-              className="rounded-xl bg-white px-6 py-6 shadow-sm border border-slate-100 flex items-center justify-center"
-            >
-              <span className="text-base md:text-lg font-semibold text-slate-800 leading-snug">
-                {txt}
-              </span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-            {/* SERVICES */}
+      
+ {/* SERVICES */}
       <section id="services" className="py-16">
         <div className="mx-auto max-w-6xl px-4">
           <SectionHeader
@@ -218,6 +198,28 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* QUICK STRIP */}
+      <section className="py-8" style={{ backgroundColor: COLORS.paper }}>
+        <div className="mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+          {[
+            "Access to 40+ trusted lenders giving you choice and flexibility.",
+            "Tailored loan options and expert guidance every step of the way.",
+            "We negotiate to secure the best rate and help you take advantage of cash-back offers.",
+          ].map((txt) => (
+            <div
+              key={txt}
+              className="rounded-xl bg-white px-6 py-6 shadow-sm border border-slate-100 flex items-center justify-center"
+            >
+              <span className="text-base md:text-lg font-semibold text-slate-800 leading-snug">
+                {txt}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+           
 
       {/* LENDERS */}
       <section id="lenders" className="py-16 bg-white border-t border-slate-200">
