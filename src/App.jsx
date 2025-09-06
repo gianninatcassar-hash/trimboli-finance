@@ -61,13 +61,12 @@ const Nav = () => {
     { href: "#reviews", label: "Reviews" },
     { href: "#contact", label: "Contact" },
   ];
-
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
         <a href="#home" className="flex items-center gap-3">
-          {/* removed small square logo to avoid 404 */}
-          <span className="font-semibold text-slate-800">Trimboli Finance</span>
+          {/* Using simple text logo so nothing breaks */}
+          <span className="text-lg font-semibold text-slate-800">Trimboli Finance</span>
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -91,23 +90,19 @@ const Nav = () => {
           onClick={() => setOpen(!open)}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.75 5.25h16.5M3.75 12h16.5M3.75 18.75h16.5"/>
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.75 5.25h16.5M3.75 12h16.5M3.75 18.75h16.5" />
           </svg>
         </button>
       </div>
 
       {open && (
         <div className="md:hidden border-t border-slate-200 bg-white px-4 py-3 space-y-2">
-          {["#services", "#lenders", "#reviews", "#contact"].map((href) => (
-            <a key={href} href={href} className="block text-sm text-slate-700">
-              {href.replace("#", "")}
+          {links.map((l) => (
+            <a key={l.href} href={l.href} className="block text-sm text-slate-700">
+              {l.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="block rounded-lg px-4 py-2 text-center text-sm text-white"
-            style={{ backgroundColor: COLORS.gold }}
-          >
+          <a href="#contact" className="block rounded-lg px-4 py-2 text-center text-sm text-white" style={{ backgroundColor: COLORS.gold }}>
             Book a consult
           </a>
         </div>
@@ -117,7 +112,7 @@ const Nav = () => {
 };
 
 /* ---------- Page ---------- */
-function App() {
+export default function App() {
   return (
     <div>
       <Topbar />
@@ -125,65 +120,83 @@ function App() {
 
       {/* HERO */}
       <section id="home" className="relative">
-        {/* Put your banner image at /public/hero-banner.png */}
-        <div
-          className="h-[58vh] md:h-[70vh] w-full bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('/hero-banner.png')`,
-            backgroundSize: "contain",      // keeps the banner intact
-            backgroundColor: COLORS.navy,    // fills sides top/bottom
-          }}
-        />
+        {/* Your banner saved as /public/hero-banner.png */}
+        <img src="/hero-banner.png" alt="" className="h-[58vh] md:h-[70vh] w-full object-contain bg-[color:var(--navy)]" style={{ backgroundColor: COLORS.navy }} />
       </section>
 
-{/* ─────────────────────────── */}
-{/* 1) WHAT WE DO */}
-{/* ─────────────────────────── */}
-<section id="services" className="py-16">
-  <div className="mx-auto max-w-6xl px-4">
-    <SectionHeader
-      kicker="What We Do"
-      title="Mortgage Solutions"
-      subtitle="Expert support across the full lending journey."
-    />
-    <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {[
-        { t: "First-home buyers", d: "Grants, deposits, borrowing power, lender policy.", img: "/first-home.png" },
-        { t: "Refinance & repricing", d: "Lower rates, cash-backs, structure review.", img: "/refinance.png" },
-        { t: "Investment loans", d: "Interest-only, splits, tax-smart structuring.", img: "/investment.png" },
-        { t: "Construction & reno", d: "Progress payments and build-specific policies.", img: "/construction-loan.png" },
-        { t: "Self-employed", d: "Alt-doc solutions for complex income.", img: "/self-employed.png" },
-        { t: "Car & asset finance", d: "Fast approvals and competitive rates.", img: "/car.png" },
-      ].map((c) => (
-        <div key={c.t} className="rounded-2xl bg-white p-6 shadow border border-slate-100">
-          {c.img && (
-            <img src={c.img} alt={c.t} className="h-36 w-full object-cover rounded-lg mb-4" />
-          )}
-          <h3 className="mt-4 font-semibold text-lg">{c.t}</h3>
-          <p className="mt-2 text-slate-600">{c.d}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-          {/* Content */}
-          <div className="p-6">
-            <div
-              className="h-10 w-10 rounded-lg flex items-center justify-center text-white"
-              style={{ backgroundColor: COLORS.navy }}
-            >
-              <span className="text-lg">•</span>
-            </div>
-            <h3 className="mt-4 font-semibold text-lg">{c.t}</h3>
-            <p className="mt-2 text-slate-600">{c.d}</p>
+      {/* 1) WHAT WE DO (with small photos back) */}
+      <section id="services" className="py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <SectionHeader
+            kicker="What We Do"
+            title="Mortgage Solutions"
+            subtitle="Expert support across the full lending journey."
+          />
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { t: "First-home buyers", d: "Grants, deposits, borrowing power, lender policy.", img: "/first-home.png" },
+              { t: "Refinance & repricing", d: "Lower rates, cash-backs, structure review.", img: "/refinance.png" },
+              { t: "Investment loans", d: "Interest-only, splits, tax-smart structuring.", img: "/investment.png" },
+              { t: "Construction & reno", d: "Progress payments and build-specific policies.", img: "/construction-loan.png" },
+              { t: "Self-employed", d: "Alt-doc solutions for complex income.", img: "/self-employed.png" },
+              { t: "Car & asset finance", d: "Fast approvals and competitive rates.", img: "/car.png" },
+            ].map((c) => (
+              <div key={c.t} className="rounded-2xl bg-white p-6 shadow border border-slate-100">
+                {c.img && <img src={c.img} alt={c.t} className="h-36 w-full object-cover rounded-lg mb-4" />}
+                <h3 className="mt-1 font-semibold text-lg">{c.t}</h3>
+                <p className="mt-2 text-slate-600">{c.d}</p>
+              </div>
+            ))}
           </div>
-        </article>
-      ))}
-    </div>
-  </div>
-</section>
-    
+        </div>
+      </section>
+
+      {/* 2) QUICK STRIP */}
+      <section className="py-6" style={{ backgroundColor: COLORS.paper }}>
+        <div className="mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+          {[
+            "Access to 40+ trusted lenders giving you choice and flexibility.",
+            "Tailored loan options and expert guidance every step of the way.",
+            "We negotiate to secure the best rate and help you take advantage of cash-back offers.",
+          ].map((txt) => (
+            <div key={txt} className="rounded-xl bg-white px-4 py-4 shadow-sm border border-slate-100">
+              <span className="text-base font-medium text-slate-700">{txt}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* LENDERS (with extra logos) */}
+      <section id="lenders" className="py-16 bg-white border-t border-slate-200">
+        <div className="mx-auto max-w-6xl px-4 text-center">
+          <Kicker>A Selection From Our Panel of Lenders</Kicker>
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold">Access to Australia’s Leading Banks & Lenders</h2>
+
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
+            {[
+              { src: "/logos/bb.png", alt: "Westpac" },
+              { src: "/logos/cbaa.png", alt: "Commonwealth Bank" },
+              { src: "/logos/anz.png", alt: "ANZ" },
+              { src: "/logos/ingg.png", alt: "ING" },
+              { src: "/logos/sc.png", alt: "Suncorp" },
+              { src: "/logos/so.png", alt: "Macquarie (old)" },
+              { src: "/logos/bom.png", alt: "Bank of Melbourne" },
+              { src: "/logos/bw.png", alt: "Bankwest" },
+              { src: "/logos/afgh.png", alt: "AFG" },
+              // NEW
+              { src: "/logos/hsbc.png", alt: "HSBC" },
+              { src: "/logos/red.png", alt: "RedZed" },
+              { src: "/logos/liberty.png", alt: "Liberty" },
+              { src: "/logos/amp.png", alt: "AMP" },
+              { src: "/logos/rest.png", alt: "Resimac" },
+              { src: "/logos/mac.png", alt: "Macquarie (new)" },
+            ].map((l) => (
+              <img key={l.alt} src={l.src} alt={l.alt} className="h-12 mx-auto opacity-100" />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* REVIEWS */}
       <section id="reviews" className="py-20" style={{ backgroundColor: COLORS.paper }}>
         <div className="mx-auto max-w-6xl px-4">
@@ -225,7 +238,7 @@ function App() {
             Whether you’re buying, refinancing or investing — let’s map your next step with confidence.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4 text-lg">
-            <a href={`tel:${BRAND.phone}`} className="rounded-lg px-6 py-3 font-semibold text-slate-900" style={{ backgroundColor: COLORS.gold }}>
+            <a href={`tel:${BRAND.phone}`} className="rounded-lg px-6 py-3 font-semibold text-slate-900 bg-white/90 hover:bg-white">
               Call {BRAND.phone}
             </a>
             <a href={`mailto:${BRAND.email}`} className="rounded-lg px-6 py-3 font-semibold border border-white/70">
@@ -237,5 +250,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
