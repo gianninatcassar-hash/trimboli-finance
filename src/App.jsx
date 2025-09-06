@@ -10,7 +10,6 @@ const BRAND = {
 const COLORS = {
   navy: "#0b3b5a",
   navyDark: "#07293f",
-  ink: "#0f172a",
   paper: "#f8f9fb",
 };
 
@@ -29,7 +28,7 @@ const SectionHeader = ({ kicker, title, subtitle }) => (
   </div>
 );
 
-/* Try multiple filenames for each lender logo */
+/* Try multiple filenames for a logo; hide if none load */
 const Logo = ({ srcs, alt }) => {
   const [idx, setIdx] = useState(0);
   if (idx >= srcs.length) return null;
@@ -48,18 +47,14 @@ const Topbar = () => (
   <div className="w-full text-white" style={{ backgroundColor: COLORS.navyDark }}>
     <div className="mx-auto max-w-7xl px-4 py-3 flex justify-end">
       <div className="flex flex-col items-end gap-1">
-        <a href={`tel:${BRAND.phone}`} className="text-xl font-bold whitespace-nowrap" style={{ color: "white" }}>
-          📞 {BRAND.phone}
-        </a>
-        <a href={`mailto:${BRAND.email}`} className="text-base font-semibold whitespace-nowrap" style={{ color: "white" }}>
-          ✉️ {BRAND.email}
-        </a>
+        <a href={`tel:${BRAND.phone}`} className="text-xl font-bold whitespace-nowrap">📞 {BRAND.phone}</a>
+        <a href={`mailto:${BRAND.email}`} className="text-base font-semibold whitespace-nowrap">✉️ {BRAND.email}</a>
       </div>
     </div>
   </div>
 );
 
-/* ---------- Nav (no brand text/logo) ---------- */
+/* ---------- Nav (no brand text/logo on the left) ---------- */
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const links = [
@@ -72,7 +67,6 @@ const Nav = () => {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center">
-        {/* nothing on the left */}
         <nav className="ml-auto hidden md:flex items-center gap-8">
           {links.map((l) => (
             <a key={l.href} href={l.href} className="text-sm font-medium text-slate-700 hover:text-slate-900">
@@ -119,7 +113,7 @@ const Nav = () => {
   );
 };
 
-/* ---------- Hero Banner (with fallbacks, no crop) ---------- */
+/* ---------- Hero Banner (fallback filenames, no crop) ---------- */
 function HeroBanner() {
   const candidates = ["/hero-banner-clean.png", "/hero-banner.png", "/hero.jpg"];
   const [idx, setIdx] = useState(0);
@@ -140,8 +134,8 @@ export default function App() {
       <Topbar />
       <Nav />
       <HeroBanner />
-      
- {/* SERVICES */}
+
+      {/* SERVICES — same look as before (photos above titles), now ABOVE the quick strip */}
       <section id="services" className="py-16">
         <div className="mx-auto max-w-6xl px-4">
           <SectionHeader
@@ -151,55 +145,26 @@ export default function App() {
           />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              {
-                t: "First-home buyers",
-                d: "Grants, deposits, borrowing power, lender policy.",
-                img: "/first-home.png",
-              },
-              {
-                t: "Refinance & repricing",
-                d: "Lower rates, cash-backs, structure review.",
-                img: "/refinance.png",
-              },
-              {
-                t: "Investment loans",
-                d: "Interest-only, splits, tax-smart structuring.",
-                img: "/investment.png",
-              },
-              {
-                t: "Construction & reno",
-                d: "Progress payments and build-specific policies.",
-                img: "/construction-loan.png",
-              },
-              {
-                t: "Self-employed",
-                d: "Alt-doc solutions for complex income.",
-                img: "/self-employed.png",
-              },
-              {
-                t: "Car & asset finance",
-                d: "Fast approvals and competitive rates.",
-                img: "/car.png",
-              },
+              { t: "First-home buyers", d: "Grants, deposits, borrowing power, lender policy.", img: "/first-home.png" },
+              { t: "Refinance & repricing", d: "Lower rates, cash-backs, structure review.", img: "/refinance.png" },
+              { t: "Investment loans", d: "Interest-only, splits, tax-smart structuring.", img: "/investment.png" },
+              { t: "Construction & reno", d: "Progress payments and build-specific policies.", img: "/construction-loan.png" },
+              { t: "Self-employed", d: "Alt-doc solutions for complex income.", img: "/self-employed.png" },
+              { t: "Car & asset finance", d: "Fast approvals and competitive rates.", img: "/car.png" },
             ].map((c) => (
-              <div
-                key={c.t}
-                className="rounded-2xl bg-white p-6 shadow border border-slate-100 text-center"
-              >
-                <img
-                  src={c.img}
-                  alt={c.t}
-                  className="h-20 w-auto mx-auto mb-4 object-contain"
-                />
-                <h3 className="mt-2 font-semibold text-lg">{c.t}</h3>
-                <p className="mt-2 text-slate-600">{c.d}</p>
+              <div key={c.t} className="rounded-2xl bg-white shadow border border-slate-100 overflow-hidden text-center">
+                <img src={c.img} alt={c.t} className="w-full h-40 object-cover" />
+                <div className="p-6">
+                  <h3 className="font-semibold text-lg">{c.t}</h3>
+                  <p className="mt-2 text-slate-600">{c.d}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* QUICK STRIP */}
+      {/* QUICK STRIP — now below Services */}
       <section className="py-8" style={{ backgroundColor: COLORS.paper }}>
         <div className="mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
           {[
@@ -207,36 +172,37 @@ export default function App() {
             "Tailored loan options and expert guidance every step of the way.",
             "We negotiate to secure the best rate and help you take advantage of cash-back offers.",
           ].map((txt) => (
-            <div
-              key={txt}
-              className="rounded-xl bg-white px-6 py-6 shadow-sm border border-slate-100 flex items-center justify-center"
-            >
-              <span className="text-base md:text-lg font-semibold text-slate-800 leading-snug">
-                {txt}
-              </span>
+            <div key={txt} className="rounded-xl bg-white px-6 py-6 shadow-sm border border-slate-100 flex items-center justify-center">
+              <span className="text-base md:text-lg font-semibold text-slate-800 leading-snug">{txt}</span>
             </div>
           ))}
         </div>
       </section>
 
-           
-
-      {/* LENDERS */}
+      {/* LENDERS — includes your new logos */}
       <section id="lenders" className="py-16 bg-white border-t border-slate-200">
         <div className="mx-auto max-w-6xl px-4 text-center">
           <Kicker>A Selection From Our Panel of Lenders</Kicker>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold">Access to Australia’s Leading Banks & Lenders</h2>
 
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
-            <Logo alt="Westpac"         srcs={["/logos/westpac.png", "/logos/bb.png"]} />
-            <Logo alt="Commonwealth"    srcs={["/logos/cba.png", "/logos/cbaa.png", "/logos/commonwealth.png"]} />
-            <Logo alt="ANZ"             srcs={["/logos/anz.png"]} />
-            <Logo alt="ING"             srcs={["/logos/ing.png", "/logos/ingg.png"]} />
-            <Logo alt="Suncorp"         srcs={["/logos/suncorp.png", "/logos/sc.png"]} />
-            <Logo alt="Macquarie"       srcs={["/logos/macquarie.png", "/logos/so.png"]} />
-            <Logo alt="Bank Australia / Bank of Melbourne" srcs={["/logos/bankaustralia.png", "/logos/bom.png"]} />
-            <Logo alt="Bankwest"        srcs={["/logos/bankwest.png", "/logos/bw.png"]} />
-            <Logo alt="AFG"             srcs={["/logos/afg.png", "/logos/afgh.png"]} />
+            <Logo alt="Westpac" srcs={["/logos/westpac.png", "/logos/bb.png"]} />
+            <Logo alt="Commonwealth" srcs={["/logos/cba.png", "/logos/cbaa.png", "/logos/commonwealth.png"]} />
+            <Logo alt="ANZ" srcs={["/logos/anz.png"]} />
+            <Logo alt="ING" srcs={["/logos/ing.png", "/logos/ingg.png"]} />
+            <Logo alt="Suncorp" srcs={["/logos/suncorp.png", "/logos/sc.png"]} />
+            <Logo alt="Macquarie" srcs={["/logos/macquarie.png", "/logos/so.png"]} />
+            <Logo alt="Bank of Melbourne" srcs={["/logos/bom.png"]} />
+            <Logo alt="Bankwest" srcs={["/logos/bankwest.png", "/logos/bw.png"]} />
+            <Logo alt="AFG" srcs={["/logos/afg.png", "/logos/afgh.png"]} />
+
+            {/* NEW logos you asked to add */}
+            <Logo alt="HSBC" srcs={["/logos/hsbc.png"]} />
+            <Logo alt="RedZed" srcs={["/logos/red.png"]} />
+            <Logo alt="Liberty" srcs={["/logos/liberty.png"]} />
+            <Logo alt="AMP" srcs={["/logos/amp.png"]} />
+            <Logo alt="Resimac" srcs={["/logos/rest.png"]} />
+            <Logo alt="Macquarie Extra" srcs={["/logos/mac.png"]} />
           </div>
         </div>
       </section>
@@ -294,3 +260,5 @@ export default function App() {
     </div>
   );
 }
+      
+        
