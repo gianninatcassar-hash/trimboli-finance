@@ -134,22 +134,24 @@ export default function App() {
       <Topbar />
       <Nav />
 
-      {/* ---------- HERO ---------- */}
+     {/* ---------- HERO ---------- */}
 <section id="home" className="relative">
   <div className="relative h-[72vh] md:h-[78vh]">
     {/* Banner image */}
     <img
       src="/hero-banner.png"
       alt="Trimboli Finance banner"
-      className="absolute inset-0 h-full w-full object-cover object-center"
+      className="absolute inset-0 h-full w-full object-cover"
+      // keep the interesting part of the banner in view on phones
+      style={{ objectPosition: "center 40%" }}
     />
 
-    {/* Dark overlay */}
-    <div className="absolute inset-0 bg-slate-900/45" />
+    {/* Dark overlay for readability */}
+    <div className="absolute inset-0 bg-slate-900/50" />
 
     {/* Content */}
-    <div className="relative z-10 mx-auto max-w-6xl h-full px-4 flex flex-col justify-center">
-      <h1 className="text-white font-extrabold tracking-tight leading-[1.2] text-[40px] sm:text-5xl max-w-[26ch]">
+    <div className="relative z-10 mx-auto max-w-6xl h-full px-6 sm:px-8 flex flex-col justify-center">
+      <h1 className="text-white font-extrabold tracking-tight leading-[1.2] text-[38px] sm:text-5xl max-w-[24ch]">
         <span className="block">Finance made clear.</span>
         <span className="block mt-1">Results you can trust.</span>
       </h1>
@@ -167,12 +169,12 @@ export default function App() {
             encodeURIComponent("New consult request - website") +
             "&body=" +
             encodeURIComponent(
-              "Hi Trimboli Finance,\n\n" +
-                "Name:\n" +
-                "Phone:\n" +
-                "Nature of enquiry:\n" +
-                "Best time to contact:\n\n" +
-                "Thanks!"
+              "Hi Rocky,\n\n" +
+              "Name:\n" +
+              "Phone:\n" +
+              "Nature of enquiry:\n" +
+              "Best time to contact:\n\n" +
+              "Thanks!"
             )
           }
           className="rounded-xl px-6 py-3 font-semibold text-slate-900"
@@ -191,7 +193,6 @@ export default function App() {
     </div>
   </div>
 </section>
-
       {/* ---------- WHAT WE DO ---------- */}
       <section id="services" className="py-16" style={{ background: COLORS.paper }}>
         <div className="mx-auto max-w-6xl px-4">
