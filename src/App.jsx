@@ -131,49 +131,55 @@ export default function App() {
       <Topbar />
       <Nav />
 
-      {/* ---------- HERO ---------- */}
-      <section
-        id="home"
-        className="relative h-[60vh] md:h-[75vh] flex items-center justify-center text-center text-white"
-        style={{
-          backgroundImage: "url('/hero-banner.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundColor: COLORS.navy,
-        }}
+    {/* ---------- HERO ---------- */}
+<section id="home" className="relative overflow-hidden" aria-label="Hero">
+  {/* Background image */}
+  <img
+    src="/hero-banner.png"
+    alt=""
+    aria-hidden="true"
+    className="absolute inset-0 h-full w-full object-cover"
+  />
+
+  {/* Dark overlay (does not intercept clicks) */}
+  <div className="absolute inset-0 bg-slate-900/45 pointer-events-none" />
+
+  {/* Foreground content */}
+  <div className="relative z-10 mx-auto max-w-6xl px-4 py-20 sm:py-24 md:py-28 text-white">
+    <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+      <span className="block">Finance made clear.</span>
+      <span className="block">Results you can trust.</span>
+    </h1>
+
+    <p className="mt-4 text-lg md:text-xl text-white/90">
+      Mortgage solutions with clarity and care.
+    </p>
+
+    <div className="mt-8 flex flex-wrap gap-4">
+      <a
+        href={
+          "mailto:Rocky@trimbolifinance.com.au" +
+          "?subject=" +
+          encodeURIComponent("Book a consult") +
+          "&body=" +
+          encodeURIComponent(
+            "Hi Rocky,\n\nMy name is: \nMobile: \nNature of enquiry: \nBest time to call: \n\nThanks!"
+          )
+        }
+        className="inline-flex items-center rounded-xl px-6 py-3 font-semibold text-slate-900"
+        style={{ backgroundColor: "#c7a144" }}
       >
-        {/* soft dark overlay so text is readable on light images */}
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 px-4">
-          <h1 className="text-3xl md:text-5xl font-bold leading-tight">
-            Finance made clear.
-            <br />
-            Results you can trust.
-          </h1>
-          <p className="mt-4 text-lg md:text-xl text-white/90">
-            Mortgage solutions with clarity and care.
-          </p>
-          <div className="mt-6 flex justify-center gap-4 flex-wrap">
-            <a
-              href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
-                "New consult request - website"
-              )}&body=${encodeURIComponent(
-                `Hi Trimboli Finance,%0A%0AName:%20%0APhone:%20%0ANature%20of%20enquiry:%20%0ABest%20time%20to%20contact:%20%0A%0AThanks!`
-              )}`}
-              className="rounded-lg px-6 py-3 font-semibold text-white shadow"
-              style={{ backgroundColor: COLORS.gold }}
-            >
-              Book a consult
-            </a>
-            <a
-              href="#services"
-              className="rounded-lg px-6 py-3 font-semibold border border-white/70 text-white"
-            >
-              Our services
-            </a>
-          </div>
-        </div>
-      </section>
+        Book a consult
+      </a>
+
+      <a
+        href="#services"
+        className="inline-flex items-center rounded-xl px-6 py-3 font-semibold border border-white/60 text-white hover:bg-white/10"
+      >
+        Our services
+      </a>
+    </div>
+  </div>
 
       {/* ---------- SERVICES (What we do) ---------- */}
       <section id="services" className="py-16">
