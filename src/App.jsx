@@ -128,46 +128,6 @@ export default function App() {
       <Topbar />
       <Nav />
       
-/* ---------- HERO ---------- */
-<section
-  id="home"
-  className="relative h-[60vh] md:h-[75vh] flex items-center justify-center text-center text-white"
-  style={{
-    backgroundImage: "url('/hero-banner.png')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundColor: COLORS.navy,
-  }}
->
-  <div className="absolute inset-0 bg-black/40" /> {/* dark overlay for text contrast */}
-
-  <div className="relative z-10 px-4">
-    <h1 className="text-3xl md:text-5xl font-bold leading-tight">
-      Finance made clear.
-      <br />
-      Results you can trust.
-    </h1>
-    <p className="mt-4 text-lg md:text-xl text-white/90">
-      Mortgage solutions with clarity and care.
-    </p>
-    <div className="mt-6 flex justify-center gap-4 flex-wrap">
-      <a
-        href="#contact"
-        className="rounded-lg px-6 py-3 font-semibold text-white shadow"
-        style={{ backgroundColor: COLORS.gold }}
-      >
-        Book a consult
-      </a>
-      <a
-        href="#services"
-        className="rounded-lg px-6 py-3 font-semibold border border-white/70 text-white"
-      >
-        Our services
-      </a>
-    </div>
-  </div>
-</section>
-
 
       {/* WHAT WE DO (with photos above cards) */}
       <section id="services" className="py-16">
