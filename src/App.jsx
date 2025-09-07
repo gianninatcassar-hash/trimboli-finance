@@ -87,7 +87,7 @@ const Nav = () => {
             className="inline-flex items-center rounded-lg px-4 py-2 text-sm font-semibold text-slate-900 shadow"
             style={{ backgroundColor: COLORS.gold }}
           >
-            Book a consult
+            Request a Callback
           </a>
         </nav>
 
@@ -113,12 +113,12 @@ const Nav = () => {
             href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
               "New consult request - website"
             )}&body=${encodeURIComponent(
-              "Hi Trimboli Finance,\n\nName:\nPhone:\nNature of enquiry:\nBest time to contact:\n\nThanks!"
+              "Hi Rocky,\n\nName:\nPhone:\nNature of enquiry:\nBest time to contact:\n\nThanks!"
             )}`}
             className="block rounded-lg px-4 py-2 text-center text-sm text-slate-900"
             style={{ backgroundColor: COLORS.gold }}
           >
-            Book a consult
+            Request a Callback
           </a>
         </div>
       )}
