@@ -109,7 +109,7 @@ const Nav = () => {
             href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
               "New consult request - website"
             )}&body=${encodeURIComponent(
-              `Hi Trimboli Finance,%0A%0AName:%20%0APhone:%20%0ANature%20of%20enquiry:%20%0ABest%20time%20to%20contact:%20%0A%0AThanks!`
+              `Hi Rocky,%0A%0AName:%20%0APhone:%20%0ANature%20of%20enquiry:%20%0ABest%20time%20to%20contact:%20%0A%0AThanks!`
             )}`}
             className="block rounded-lg px-4 py-2 text-center text-sm text-white"
             style={{ backgroundColor: COLORS.gold }}
