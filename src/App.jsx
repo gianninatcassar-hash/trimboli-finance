@@ -134,15 +134,15 @@ export default function App() {
       <Topbar />
       <Nav />
 
-     {/* ---------- HERO ---------- */}
+          {/* ---------- HERO ---------- */}
 <section id="home" className="relative">
   <div className="relative h-[72vh] md:h-[78vh]">
     {/* Banner image */}
+    {/* keep the interesting part of the banner in view on phones */}
     <img
       src="/hero-banner.png"
       alt="Trimboli Finance banner"
       className="absolute inset-0 h-full w-full object-cover"
-      // keep the interesting part of the banner in view on phones
       style={{ objectPosition: "center 40%" }}
     />
 
