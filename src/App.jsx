@@ -130,34 +130,38 @@ export default function App() {
     <div>
       <Topbar />
       <Nav />
-     {/* ---------- HERO ---------- */}
+     {{/* ---------- HERO ---------- */}
 <section id="home" className="relative">
   <div
     className="relative min-h-[62vh] md:min-h-[78vh] bg-no-repeat bg-cover"
     style={{
       backgroundImage: "url('/hero-banner.png')",
-      backgroundPosition: "center", // try "50% 35%" if you want the image a little higher
+      // Tweak the second number to move the image up/down (e.g. 35%, 40%, 45%)
+      backgroundPosition: "center 40%",
     }}
   >
-    {/* overlay */}
+    {/* dark overlay to keep text readable */}
     <div className="absolute inset-0 bg-black/55" />
 
     {/* content */}
-    <div className="relative z-10 mx-auto max-w-5xl px-4 py-16 md:py-24 text-center">
+    <div className="relative z-10 mx-auto max-w-5xl px-4 
+                    pt-20 md:pt-28 /* pushes text down from the very top */
+                    pb-12 md:pb-16 text-left md:text-left">
       <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-white">
         Finance made clear.
         <span className="block">Results you can trust.</span>
       </h1>
+
       <p className="mt-4 text-lg md:text-xl text-white/90">
         Mortgage solutions with clarity and care.
       </p>
 
-      <div className="mt-6 flex flex-wrap gap-4 justify-center">
+      <div className="mt-6 flex flex-wrap gap-4">
         <a
           href={`mailto:Rocky@trimbolifinance.com.au?subject=${encodeURIComponent(
             "New consult request - website"
           )}&body=${encodeURIComponent(
-            "Hi Trimboli Finance,\n\n" +
+            "Hi Rocky,\n\n" +
               "Name: \n" +
               "Phone: \n" +
               "Nature of enquiry: \n" +
