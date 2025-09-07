@@ -130,6 +130,56 @@ export default function App() {
     <div>
       <Topbar />
       <Nav />
+      {/* ---------- HERO ---------- */}
+<section id="home" className="relative">
+  {/* Hero background image */}
+  <img
+    src="/hero-banner.png"
+    alt="Trimboli Finance"
+    className="h-[60vh] md:h-[75vh] w-full object-cover"
+  />
+
+  {/* Dark overlay for readability */}
+  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+
+  {/* Hero content */}
+  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+    <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+      Finance made clear. <br />
+      Results you can trust.
+    </h1>
+    <p className="mt-4 text-lg md:text-xl text-white/90">
+      Mortgage solutions with clarity and care.
+    </p>
+
+    {/* Buttons */}
+    <div className="mt-6 flex gap-4 flex-wrap justify-center">
+      <a
+        href={`mailto:Rocky@trimbolifinance.com.au?subject=${encodeURIComponent(
+          "New consult request - website"
+        )}&body=${encodeURIComponent(
+          "Hi Trimboli Finance,\n\n" +
+            "Name: \n" +
+            "Phone: \n" +
+            "Nature of enquiry: \n" +
+            "Best time to contact: \n\n" +
+            "Thanks!"
+        )}`}
+        className="inline-flex items-center rounded-xl px-6 py-3 font-semibold text-slate-900 shadow-md hover:shadow-lg transition"
+        style={{ backgroundColor: "#c7a144" }}
+      >
+        Book a consult
+      </a>
+
+      <a
+        href="#services"
+        className="inline-flex items-center rounded-xl px-6 py-3 font-semibold border border-white text-white hover:bg-white hover:text-slate-900 transition"
+      >
+        Our services
+      </a>
+    </div>
+  </div>
+</section>
       {/* ---------- SERVICES (What we do) ---------- */}
       <section id="services" className="py-16">
         <div className="mx-auto max-w-6xl px-4">
