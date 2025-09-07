@@ -130,7 +130,7 @@ export default function App() {
     <div>
       <Topbar />
       <Nav />
-     {{/* ---------- HERO ---------- */}
+     {/* ---------- HERO ---------- */}
 <section id="home" className="relative">
   <div
     className="relative min-h-[62vh] md:min-h-[78vh] bg-no-repeat bg-cover"
