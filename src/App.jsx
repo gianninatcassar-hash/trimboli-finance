@@ -30,13 +30,6 @@ const SectionHeader = ({ kicker, title, subtitle }) => (
   </div>
 );
 
-/* ---------- Pre-filled email link used by all CTAs ---------- */
-const CONSULT_MAILTO = `mailto:${BRAND.email}?subject=${encodeURIComponent(
-  "Consultation request – Trimboli Finance"
-)}&body=${encodeURIComponent(
-  "Hi Rocky,\n\nMy details:\nName: \nPhone: \nNature of enquiry: \nBest contact time: \n\nThanks."
-)}`;
-
 /* ---------- Topbar ---------- */
 const Topbar = () => (
   <div className="w-full text-white" style={{ backgroundColor: COLORS.navyDark }}>
@@ -82,7 +75,11 @@ const Nav = () => {
             </a>
           ))}
           <a
-            href={CONSULT_MAILTO}
+            href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
+              "New consult request - website"
+            )}&body=${encodeURIComponent(
+              `Hi Trimboli Finance,%0A%0AName:%20%0APhone:%20%0ANature%20of%20enquiry:%20%0ABest%20time%20to%20contact:%20%0A%0AThanks!`
+            )}`}
             className="inline-flex items-center rounded-lg px-4 py-2 text-sm font-semibold text-white shadow"
             style={{ backgroundColor: COLORS.gold }}
           >
@@ -109,7 +106,11 @@ const Nav = () => {
             </a>
           ))}
           <a
-            href={CONSULT_MAILTO}
+            href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
+              "New consult request - website"
+            )}&body=${encodeURIComponent(
+              `Hi Trimboli Finance,%0A%0AName:%20%0APhone:%20%0ANature%20of%20enquiry:%20%0ABest%20time%20to%20contact:%20%0A%0AThanks!`
+            )}`}
             className="block rounded-lg px-4 py-2 text-center text-sm text-white"
             style={{ backgroundColor: COLORS.gold }}
           >
@@ -121,15 +122,60 @@ const Nav = () => {
   );
 };
 
-/* ---------- Page ---------- */
+/* =========================================================
+   PAGE
+   ========================================================= */
 export default function App() {
   return (
     <div>
       <Topbar />
       <Nav />
-      
 
-      {/* WHAT WE DO (with photos above cards) */}
+      {/* ---------- HERO ---------- */}
+      <section
+        id="home"
+        className="relative h-[60vh] md:h-[75vh] flex items-center justify-center text-center text-white"
+        style={{
+          backgroundImage: "url('/hero-banner.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundColor: COLORS.navy,
+        }}
+      >
+        {/* soft dark overlay so text is readable on light images */}
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 px-4">
+          <h1 className="text-3xl md:text-5xl font-bold leading-tight">
+            Finance made clear.
+            <br />
+            Results you can trust.
+          </h1>
+          <p className="mt-4 text-lg md:text-xl text-white/90">
+            Mortgage solutions with clarity and care.
+          </p>
+          <div className="mt-6 flex justify-center gap-4 flex-wrap">
+            <a
+              href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
+                "New consult request - website"
+              )}&body=${encodeURIComponent(
+                `Hi Trimboli Finance,%0A%0AName:%20%0APhone:%20%0ANature%20of%20enquiry:%20%0ABest%20time%20to%20contact:%20%0A%0AThanks!`
+              )}`}
+              className="rounded-lg px-6 py-3 font-semibold text-white shadow"
+              style={{ backgroundColor: COLORS.gold }}
+            >
+              Book a consult
+            </a>
+            <a
+              href="#services"
+              className="rounded-lg px-6 py-3 font-semibold border border-white/70 text-white"
+            >
+              Our services
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- SERVICES (What we do) ---------- */}
       <section id="services" className="py-16">
         <div className="mx-auto max-w-6xl px-4">
           <SectionHeader
@@ -137,7 +183,6 @@ export default function App() {
             title="Mortgage Solutions"
             subtitle="Expert support across the full lending journey."
           />
-
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { t: "First-home buyers", d: "Grants, deposits, borrowing power, lender policy.", img: "/first-home.png" },
@@ -147,21 +192,17 @@ export default function App() {
               { t: "Self-employed", d: "Alt-doc solutions for complex income.", img: "/self-employed.png" },
               { t: "Car & asset finance", d: "Fast approvals and competitive rates.", img: "/car.png" },
             ].map((c) => (
-              <article key={c.t} className="overflow-hidden rounded-2xl bg-white shadow border border-slate-100">
-                <div className="aspect-[16/9] w-full bg-slate-100">
-                  <img src={c.img} alt={c.t} className="h-full w-full object-cover" loading="lazy" />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-semibold text-lg">{c.t}</h3>
-                  <p className="mt-2 text-slate-600">{c.d}</p>
-                </div>
-              </article>
+              <div key={c.t} className="rounded-2xl bg-white p-6 shadow border border-slate-100">
+                {c.img && <img src={c.img} alt={c.t} className="h-36 w-full object-cover rounded-lg mb-4" />}
+                <h3 className="mt-1 font-semibold text-lg">{c.t}</h3>
+                <p className="mt-2 text-slate-600">{c.d}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* QUICK STRIP */}
+      {/* ---------- QUICK STRIP ---------- */}
       <section className="py-6" style={{ backgroundColor: COLORS.paper }}>
         <div className="mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
           {[
@@ -176,46 +217,39 @@ export default function App() {
         </div>
       </section>
 
-      {/* LENDERS (with extra logos) */}
-<section id="lenders" className="py-16 bg-white border-t border-slate-200">
-  <div className="mx-auto max-w-6xl px-4 text-center">
-    <Kicker>A Selection From Our Panel of Lenders</Kicker>
-    <h2 className="mt-2 text-3xl md:text-4xl font-bold">
-      Access to Australia’s Leading Banks & Lenders
-    </h2>
+      {/* ---------- LENDERS ---------- */}
+      <section id="lenders" className="py-16 bg-white border-t border-slate-200">
+        <div className="mx-auto max-w-6xl px-4 text-center">
+          <Kicker>A Selection From Our Panel of Lenders</Kicker>
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold">Access to Australia’s Leading Banks & Lenders</h2>
 
-    <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
-      {[
-        { src: "/logos/bb.png", alt: "Westpac" },
-        { src: "/logos/cbaa.png", alt: "Commonwealth Bank" },
-        { src: "/logos/anz.png", alt: "ANZ" },
-        { src: "/logos/ingg.png", alt: "ING" },
-        { src: "/logos/sc.png", alt: "Suncorp" },
-        { src: "/logos/so.png", alt: "Macquarie (old)" },
-        { src: "/logos/bom.png", alt: "Bank of Melbourne" },
-        { src: "/logos/bw.png", alt: "Bankwest" },
-        { src: "/logos/afgh.png", alt: "AFG" },
-        { src: "/logos/hsbc.png", alt: "HSBC" },
-        { src: "/logos/red.png", alt: "RedZed" },
-        { src: "/logos/liberty.png", alt: "Liberty" },
-        { src: "/logos/amp.png", alt: "AMP" },
-        { src: "/logos/rest.png", alt: "Resimac" },
-        { src: "/logos/mac.png", alt: "Macquarie (new)" },
-        // 👇 Add Pepper here
-        { src: "/logos/pepper.png", alt: "Pepper" },
-      ].map((l) => (
-        <img
-          key={l.alt}
-          src={l.src}
-          alt={l.alt}
-          className="h-12 mx-auto opacity-100"
-        />
-      ))}
-    </div>
-  </div>
-</section>
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
+            {[
+              { src: "/logos/bb.png", alt: "Westpac" },
+              { src: "/logos/cbaa.png", alt: "Commonwealth Bank" },
+              { src: "/logos/anz.png", alt: "ANZ" },
+              { src: "/logos/ingg.png", alt: "ING" },
+              { src: "/logos/sc.png", alt: "Suncorp" },
+              { src: "/logos/so.png", alt: "Macquarie (old)" },
+              { src: "/logos/bom.png", alt: "Bank of Melbourne" },
+              { src: "/logos/bw.png", alt: "Bankwest" },
+              { src: "/logos/afgh.png", alt: "AFG" },
+              // Extras you asked for
+              { src: "/logos/hsbc.png", alt: "HSBC" },
+              { src: "/logos/red.png", alt: "RedZed" },
+              { src: "/logos/liberty.png", alt: "Liberty" },
+              { src: "/logos/amp.png", alt: "AMP" },
+              { src: "/logos/rest.png", alt: "Resimac" },
+              { src: "/logos/mac.png", alt: "Macquarie (new)" },
+              { src: "/logos/pepper.png", alt: "Pepper Money" },
+            ].map((l) => (
+              <img key={l.alt} src={l.src} alt={l.alt} className="h-12 mx-auto opacity-100" />
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* REVIEWS */}
+      {/* ---------- REVIEWS ---------- */}
       <section id="reviews" className="py-20" style={{ backgroundColor: COLORS.paper }}>
         <div className="mx-auto max-w-6xl px-4">
           <SectionHeader kicker="Reviews" title="What our clients say" />
@@ -247,7 +281,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* CONTACT */}
+      {/* ---------- CONTACT ---------- */}
       <section id="contact" className="relative py-16 text-white" style={{ background: `linear-gradient(135deg, ${COLORS.navy}, ${COLORS.navyDark})` }}>
         <div className="mx-auto max-w-5xl px-4 text-center">
           <Kicker>Get in Touch</Kicker>
@@ -259,7 +293,14 @@ export default function App() {
             <a href={`tel:${BRAND.phone}`} className="rounded-lg px-6 py-3 font-semibold text-slate-900 bg-white/90 hover:bg-white">
               Call {BRAND.phone}
             </a>
-            <a href={CONSULT_MAILTO} className="rounded-lg px-6 py-3 font-semibold border border-white/70 text-white">
+            <a
+              href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
+                "New consult request - website"
+              )}&body=${encodeURIComponent(
+                `Hi Trimboli Finance,%0A%0AName:%20%0APhone:%20%0ANature%20of%20enquiry:%20%0ABest%20time%20to%20contact:%20%0A%0AThanks!`
+              )}`}
+              className="rounded-lg px-6 py-3 font-semibold border border-white/70"
+            >
               Email {BRAND.email}
             </a>
           </div>
