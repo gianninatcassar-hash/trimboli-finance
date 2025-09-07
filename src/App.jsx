@@ -128,7 +128,7 @@ export default function App() {
       <Topbar />
       <Nav />
 
-section
+
 
       {/* WHAT WE DO (with photos above cards) */}
       <section id="services" className="py-16">
