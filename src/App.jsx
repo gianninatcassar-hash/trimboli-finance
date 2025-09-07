@@ -130,7 +130,7 @@ export default function App() {
     <div>
       <Topbar />
       <Nav />
-     {{/* ---------- HERO (centered, no overlap) ---------- */}
+     {/* ---------- HERO (centered, no overlap) ---------- */}
 <section id="home" className="relative">
   <div className="relative h-[72vh] md:h-[80vh] bg-[#0b3b5a] overflow-hidden">
     {/* Banner image */}
