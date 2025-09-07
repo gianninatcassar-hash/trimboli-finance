@@ -130,29 +130,28 @@ export default function App() {
     <div>
       <Topbar />
       <Nav />
-     {/* ---------- HERO ---------- */}
+     {/* ---------- HERO (image + overlay, rock-solid) ---------- */}
 <section id="home" className="relative">
-  <div
-    className="relative min-h-[62vh] md:min-h-[78vh] bg-no-repeat bg-cover"
-    style={{
-      backgroundImage: "url('/hero-banner.png')",
-      // Tweak the second number to move the image up/down (e.g. 35%, 40%, 45%)
-      backgroundPosition: "center 40%",
-    }}
-  >
-    {/* dark overlay to keep text readable */}
+  <div className="relative h-[66vh] md:h-[78vh] bg-[#0b3b5a] overflow-hidden">
+    {/* Banner image */}
+    <img
+      src="/hero-banner.png"
+      alt=""
+      className="absolute inset-0 h-full w-full object-cover"
+      style={{ objectPosition: "center 42%" }}  // tweak 38–50% to move up/down
+    />
+
+    {/* Dark overlay */}
     <div className="absolute inset-0 bg-black/55" />
 
-    {/* content */}
-    <div className="relative z-10 mx-auto max-w-5xl px-4 
-                    pt-20 md:pt-28 /* pushes text down from the very top */
-                    pb-12 md:pb-16 text-left md:text-left">
-      <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-white">
+    {/* Content */}
+    <div className="relative z-10 mx-auto max-w-5xl px-4 pt-20 md:pt-28 pb-12">
+      <h1 className="text-white font-extrabold leading-tight text-4xl md:text-6xl">
         Finance made clear.
         <span className="block">Results you can trust.</span>
       </h1>
 
-      <p className="mt-4 text-lg md:text-xl text-white/90">
+      <p className="mt-4 text-white/90 text-lg md:text-xl">
         Mortgage solutions with clarity and care.
       </p>
 
@@ -161,12 +160,7 @@ export default function App() {
           href={`mailto:Rocky@trimbolifinance.com.au?subject=${encodeURIComponent(
             "New consult request - website"
           )}&body=${encodeURIComponent(
-            "Hi Rocky,\n\n" +
-              "Name: \n" +
-              "Phone: \n" +
-              "Nature of enquiry: \n" +
-              "Best time to contact: \n\n" +
-              "Thanks!"
+            "Hi Trimboli Finance,\n\nName:\nPhone:\nNature of enquiry:\nBest time to contact:\n\nThanks!"
           )}`}
           className="inline-flex items-center rounded-xl px-6 py-3 font-semibold text-slate-900 shadow-md hover:shadow-lg transition"
           style={{ backgroundColor: "#c7a144" }}
