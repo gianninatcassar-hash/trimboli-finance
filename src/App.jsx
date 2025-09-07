@@ -128,44 +128,7 @@ export default function App() {
       <Topbar />
       <Nav />
 
- {/* HERO (fixed layout) */}
-<section id="home" className="relative overflow-hidden" style={{ backgroundColor: COLORS.navy }}>
-  {/* background image */}
-  <img
-    src="/hero-banner.png"
-    alt=""
-    className="absolute inset-0 h-full w-full object-cover opacity-70"
-  />
-
-  {/* content */}
-  <div className="relative mx-auto max-w-6xl px-4 py-20 md:py-28">
-    <h1 className="text-white font-extrabold leading-tight tracking-tight text-4xl md:text-6xl not-italic">
-      Finance made clear.<br className="hidden sm:block" />
-      <span className="whitespace-normal">Results you can trust.</span>
-    </h1>
-
-    <p className="mt-4 text-white/90 text-lg md:text-xl max-w-2xl">
-      Mortgage solutions with clarity and care.
-    </p>
-
-    <div className="mt-8 flex flex-col sm:flex-row gap-4">
-      <a
-        href="mailto:Rocky@trimbolifinance.com.au?subject=Book%20a%20Consult&body=Hi%20Rocky%2C%0A%0AName%3A%0APhone%3A%0ABest%20time%20to%20contact%3A%0ANature%20of%20enquiry%3A%0A"
-        className="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-slate-900 bg-[color:#c7a144] hover:opacity-95"
-      >
-        Book a consult
-      </a>
-
-      <a
-        href="#services"
-        className="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-white border border-white/70 hover:bg-white/10"
-        style={{ textDecoration: "none" }}
-      >
-        Our services
-      </a>
-    </div>
-  </div>
-</section>
+section
 
       {/* WHAT WE DO (with photos above cards) */}
       <section id="services" className="py-16">
