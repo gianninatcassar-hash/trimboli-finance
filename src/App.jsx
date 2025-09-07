@@ -130,7 +130,7 @@ export default function App() {
     <div>
       <Topbar />
       <Nav />
-      {/* ---------- HERO ---------- */}
+   {/* ---------- HERO (fixed overlay) ---------- */}
 <section id="home" className="relative overflow-hidden" aria-label="Hero">
   {/* Background image */}
   <img
@@ -140,17 +140,20 @@ export default function App() {
     className="absolute inset-0 h-full w-full object-cover z-0"
   />
 
-  {/* Dark overlay */}
-  <div className="absolute inset-0 bg-slate-900/45 z-0 pointer-events-none" />
+  {/* Solid dark overlay */}
+  <div className="absolute inset-0 z-[1] bg-slate-900/65 pointer-events-none" />
+
+  {/* Soft gradient on top for extra contrast */}
+  <div className="absolute inset-0 z-[2] bg-gradient-to-b from-slate-900/60 via-slate-900/45 to-transparent pointer-events-none" />
 
   {/* Foreground content */}
-  <div className="relative z-10 mx-auto max-w-6xl px-4 py-20 sm:py-24 md:py-28 text-white">
-    <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+  <div className="relative z-[3] mx-auto max-w-6xl px-4 py-20 sm:py-24 md:py-28 text-white">
+    <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
       <span className="block">Finance made clear.</span>
       <span className="block">Results you can trust.</span>
     </h1>
 
-    <p className="mt-4 text-lg md:text-xl text-white/90">
+    <p className="mt-4 text-lg md:text-xl text-white/95 drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]">
       Mortgage solutions with clarity and care.
     </p>
 
@@ -163,7 +166,7 @@ export default function App() {
             "Hi Rocky,\n\nMy name is: \nMobile: \nNature of enquiry: \nBest time to call: \n\nThanks!"
           )
         }
-        className="inline-flex items-center rounded-xl px-6 py-3 font-semibold text-slate-900"
+        className="inline-flex items-center rounded-xl px-6 py-3 font-semibold text-slate-900 shadow-md hover:shadow-lg transition"
         style={{ backgroundColor: "#c7a144" }}
       >
         Book a consult
@@ -171,7 +174,7 @@ export default function App() {
 
       <a
         href="#services"
-        className="inline-flex items-center rounded-xl px-6 py-3 font-semibold border border-white/60 text-white hover:bg-white/10"
+        className="inline-flex items-center rounded-xl px-6 py-3 font-semibold border border-white/70 text-white hover:bg-white/10"
       >
         Our services
       </a>
