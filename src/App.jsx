@@ -134,27 +134,25 @@ export default function App() {
       <Topbar />
       <Nav />
 
-{/* ---------- HERO (Letterbox image + text below) ---------- */}
+{/* ---------- HERO (Letterbox, zoomed out) ---------- */}
 <section id="home" className="relative">
-  {/* Banner image with fixed "letterbox" height */}
+  {/* Banner image */}
   <div className="w-full">
     <img
       src="/hero-banner.png"
       alt="Trimboli Finance banner"
-      className="w-full h-[35vh] md:h-[45vh] object-cover object-center"
+      className="w-full h-[32vh] md:h-[42vh] object-contain bg-slate-200"
     />
   </div>
 
-  {/* Text section BELOW the image */}
+  {/* Text section BELOW */}
   <div className="bg-white py-12 px-6 sm:px-8 text-center">
     <h1 className="text-slate-900 font-extrabold tracking-tight leading-tight text-3xl sm:text-5xl">
       Finance made clear. <br className="hidden sm:block" />
       Results you can trust.
     </h1>
 
-    <p className="mt-4 text-slate-600 text-lg">
-      {BRAND.tagline}
-    </p>
+    <p className="mt-4 text-slate-600 text-lg">{BRAND.tagline}</p>
 
     <div className="mt-6 flex flex-wrap justify-center gap-4">
       <a
