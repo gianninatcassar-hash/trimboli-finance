@@ -130,53 +130,53 @@ export default function App() {
     <div>
       <Topbar />
       <Nav />
-      {/* ---------- HERO ---------- */}
+     {/* ---------- HERO ---------- */}
 <section id="home" className="relative">
-  {/* Hero background image */}
-  <img
-    src="/hero-banner.png"
-    alt="Trimboli Finance"
-    className="h-[60vh] md:h-[75vh] w-full object-cover"
-  />
+  <div
+    className="relative min-h-[62vh] md:min-h-[78vh] bg-no-repeat bg-cover"
+    style={{
+      backgroundImage: "url('/hero-banner.png')",
+      backgroundPosition: "center", // try "50% 35%" if you want the image a little higher
+    }}
+  >
+    {/* overlay */}
+    <div className="absolute inset-0 bg-black/55" />
 
-  {/* Dark overlay for readability */}
-  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+    {/* content */}
+    <div className="relative z-10 mx-auto max-w-5xl px-4 py-16 md:py-24 text-center">
+      <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-white">
+        Finance made clear.
+        <span className="block">Results you can trust.</span>
+      </h1>
+      <p className="mt-4 text-lg md:text-xl text-white/90">
+        Mortgage solutions with clarity and care.
+      </p>
 
-  {/* Hero content */}
-  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-    <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
-      Finance made clear. <br />
-      Results you can trust.
-    </h1>
-    <p className="mt-4 text-lg md:text-xl text-white/90">
-      Mortgage solutions with clarity and care.
-    </p>
+      <div className="mt-6 flex flex-wrap gap-4 justify-center">
+        <a
+          href={`mailto:Rocky@trimbolifinance.com.au?subject=${encodeURIComponent(
+            "New consult request - website"
+          )}&body=${encodeURIComponent(
+            "Hi Trimboli Finance,\n\n" +
+              "Name: \n" +
+              "Phone: \n" +
+              "Nature of enquiry: \n" +
+              "Best time to contact: \n\n" +
+              "Thanks!"
+          )}`}
+          className="inline-flex items-center rounded-xl px-6 py-3 font-semibold text-slate-900 shadow-md hover:shadow-lg transition"
+          style={{ backgroundColor: "#c7a144" }}
+        >
+          Book a consult
+        </a>
 
-    {/* Buttons */}
-    <div className="mt-6 flex gap-4 flex-wrap justify-center">
-      <a
-        href={`mailto:Rocky@trimbolifinance.com.au?subject=${encodeURIComponent(
-          "New consult request - website"
-        )}&body=${encodeURIComponent(
-          "Hi Trimboli Finance,\n\n" +
-            "Name: \n" +
-            "Phone: \n" +
-            "Nature of enquiry: \n" +
-            "Best time to contact: \n\n" +
-            "Thanks!"
-        )}`}
-        className="inline-flex items-center rounded-xl px-6 py-3 font-semibold text-slate-900 shadow-md hover:shadow-lg transition"
-        style={{ backgroundColor: "#c7a144" }}
-      >
-        Book a consult
-      </a>
-
-      <a
-        href="#services"
-        className="inline-flex items-center rounded-xl px-6 py-3 font-semibold border border-white text-white hover:bg-white hover:text-slate-900 transition"
-      >
-        Our services
-      </a>
+        <a
+          href="#services"
+          className="inline-flex items-center rounded-xl px-6 py-3 font-semibold border border-white text-white hover:bg-white hover:text-slate-900 transition"
+        >
+          Our services
+        </a>
+      </div>
     </div>
   </div>
 </section>
