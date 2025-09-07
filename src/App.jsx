@@ -134,7 +134,7 @@ const Nav = () => {
             href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
               "New consult request - website"
             )}&body=${encodeURIComponent(
-              "Hi Trimboli Finance,\n\nName:\nPhone:\nNature of enquiry:\nBest time to contact:\n\nThanks!"
+              "Hi Rocky,\n\nName:\nPhone:\nNature of enquiry:\nBest time to contact:\n\nThanks!"
             )}`}
             className="block rounded-lg px-4 py-2 text-center text-sm text-slate-900"
             style={{ backgroundColor: COLORS.gold }}
@@ -155,54 +155,62 @@ export default function App() {
       <Topbar />
       <Nav />
 
-      {/* ---------- HERO (centered, overlay) ---------- */}
-      <section id="home" className="relative">
-        <div className="relative h-[72vh] md:h-[80vh] bg-[color:var(--navy)] overflow-hidden">
-          {/* Banner image */}
-          <img
-            src="/hero-banner.png?v=2"
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover"
-            style={{ objectPosition: "center 50%" }}
-          />
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-black/55" />
-          {/* Centered content */}
-          <div className="absolute inset-0 grid place-items-center px-4">
-            <div className="z-10 w-full max-w-5xl">
-              <h1 className="text-white font-extrabold leading-tight text-4xl md:text-6xl">
-                Finance made clear.
-                <span className="block">Results you can trust.</span>
-              </h1>
+    {/* ---------- HERO ---------- */}
+<section id="home" className="relative">
+  <div className="relative h-[72vh] md:h-[78vh]">
+    {/* Banner image */}
+    <img
+      src="/hero-banner.png"
+      alt="Trimboli Finance banner"
+      className="absolute inset-0 h-full w-full object-cover object-center"
+    />
 
-              <p className="mt-4 text-white/90 text-lg md:text-xl">
-                {BRAND.tagline}
-              </p>
+    {/* Dark overlay */}
+    <div className="absolute inset-0 bg-slate-900/45" />
 
-              <div className="mt-6 flex flex-wrap gap-4">
-                <a
-                  href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
-                    "New consult request - website"
-                  )}&body=${encodeURIComponent(
-                    "Hi Trimboli Finance,\n\nName:\nPhone:\nNature of enquiry:\nBest time to contact:\n\nThanks!"
-                  )}`}
-                  className="inline-flex items-center rounded-xl px-6 py-3 font-semibold text-slate-900 shadow-md hover:shadow-lg transition"
-                  style={{ backgroundColor: COLORS.gold }}
-                >
-                  Book a consult
-                </a>
+    {/* Content */}
+    <div className="relative z-10 mx-auto max-w-6xl h-full px-4 flex flex-col justify-center">
+      <h1 className="text-white font-extrabold text-4xl sm:text-5xl leading-tight max-w-3xl">
+        Finance made clear.<br className="hidden sm:block" />
+        Results you can trust.
+      </h1>
 
-                <a
-                  href="#services"
-                  className="inline-flex items-center rounded-xl px-6 py-3 font-semibold border border-white text-white hover:bg-white hover:text-slate-900 transition"
-                >
-                  Our services
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <p className="mt-3 text-white/90 text-lg">
+        Mortgage solutions with clarity and care.
+      </p>
+
+      <div className="mt-6 flex flex-wrap gap-4">
+        <a
+          href={
+            "mailto:Rocky@trimbolifinance.com.au" +
+            "?subject=" +
+            encodeURIComponent("New consult request - website") +
+            "&body=" +
+            encodeURIComponent(
+              "Hi Trimboli Finance,\r\n\r\n" +
+              "Name: \r\n" +
+              "Phone: \r\n" +
+              "Nature of enquiry: \r\n" +
+              "Best time to contact: \r\n\r\n" +
+              "Thanks!"
+            )
+          }
+          className="rounded-xl px-6 py-3 font-semibold text-slate-900"
+          style={{ backgroundColor: "#c7a144" }}
+        >
+          Book a consult
+        </a>
+
+        <a
+          href="#services"
+          className="rounded-xl px-6 py-3 font-semibold text-white border border-white/70"
+        >
+          Our services
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* ---------- WHAT WE DO ---------- */}
       <section id="services" className="py-16" style={{ background: COLORS.paper }}>
