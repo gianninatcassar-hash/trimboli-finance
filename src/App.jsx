@@ -30,6 +30,13 @@ const SectionHeader = ({ kicker, title, subtitle }) => (
   </div>
 );
 
+/* ---------- Pre-filled email link used by all CTAs ---------- */
+const CONSULT_MAILTO = `mailto:${BRAND.email}?subject=${encodeURIComponent(
+  "Consultation request – Trimboli Finance"
+)}&body=${encodeURIComponent(
+  "Hi Rocky,\n\nMy details:\nName: \nPhone: \nNature of enquiry: \nBest contact time: \n\nThanks."
+)}`;
+
 /* ---------- Topbar ---------- */
 const Topbar = () => (
   <div className="w-full text-white" style={{ backgroundColor: COLORS.navyDark }}>
@@ -65,7 +72,6 @@ const Nav = () => {
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
         <a href="#home" className="flex items-center gap-3">
-          {/* Using simple text logo so nothing breaks */}
           <span className="text-lg font-semibold text-slate-800">Trimboli Finance</span>
         </a>
 
@@ -76,7 +82,7 @@ const Nav = () => {
             </a>
           ))}
           <a
-            href="#contact"
+            href={CONSULT_MAILTO}
             className="inline-flex items-center rounded-lg px-4 py-2 text-sm font-semibold text-white shadow"
             style={{ backgroundColor: COLORS.gold }}
           >
@@ -102,7 +108,11 @@ const Nav = () => {
               {l.label}
             </a>
           ))}
-          <a href="#contact" className="block rounded-lg px-4 py-2 text-center text-sm text-white" style={{ backgroundColor: COLORS.gold }}>
+          <a
+            href={CONSULT_MAILTO}
+            className="block rounded-lg px-4 py-2 text-center text-sm text-white"
+            style={{ backgroundColor: COLORS.gold }}
+          >
             Book a consult
           </a>
         </div>
@@ -120,11 +130,36 @@ export default function App() {
 
       {/* HERO */}
       <section id="home" className="relative">
-        {/* Your banner saved as /public/hero-banner.png */}
-        <img src="/hero-banner.png" alt="" className="h-[58vh] md:h-[70vh] w-full object-contain bg-[color:var(--navy)]" style={{ backgroundColor: COLORS.navy }} />
+        {/* Banner image must exist at /public/hero-banner.png */}
+        <img
+          src="/hero-banner.png"
+          alt="Mortgage Broker in Melbourne"
+          className="h-[58vh] md:h-[70vh] w-full object-contain"
+          style={{ backgroundColor: COLORS.navy }}
+        />
+        <div className="absolute inset-0 flex items-center">
+          <div className="mx-auto max-w-5xl px-4 text-white text-center">
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+              Finance made clear. <br /> Results you can trust.
+            </h1>
+            <p className="mt-4 text-lg text-white/90">{BRAND.tagline}</p>
+            <div className="mt-6 flex flex-wrap gap-3 justify-center">
+              <a
+                href={CONSULT_MAILTO}
+                className="rounded-lg px-6 py-3 font-semibold text-white"
+                style={{ backgroundColor: COLORS.gold }}
+              >
+                Book a consult
+              </a>
+              <a href="#services" className="rounded-lg px-6 py-3 font-semibold border border-white/70 text-white">
+                Our services
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* 1) WHAT WE DO (with small photos back) */}
+      {/* WHAT WE DO (with photos above cards) */}
       <section id="services" className="py-16">
         <div className="mx-auto max-w-6xl px-4">
           <SectionHeader
@@ -132,6 +167,7 @@ export default function App() {
             title="Mortgage Solutions"
             subtitle="Expert support across the full lending journey."
           />
+
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { t: "First-home buyers", d: "Grants, deposits, borrowing power, lender policy.", img: "/first-home.png" },
@@ -141,17 +177,21 @@ export default function App() {
               { t: "Self-employed", d: "Alt-doc solutions for complex income.", img: "/self-employed.png" },
               { t: "Car & asset finance", d: "Fast approvals and competitive rates.", img: "/car.png" },
             ].map((c) => (
-              <div key={c.t} className="rounded-2xl bg-white p-6 shadow border border-slate-100">
-                {c.img && <img src={c.img} alt={c.t} className="h-36 w-full object-cover rounded-lg mb-4" />}
-                <h3 className="mt-1 font-semibold text-lg">{c.t}</h3>
-                <p className="mt-2 text-slate-600">{c.d}</p>
-              </div>
+              <article key={c.t} className="overflow-hidden rounded-2xl bg-white shadow border border-slate-100">
+                <div className="aspect-[16/9] w-full bg-slate-100">
+                  <img src={c.img} alt={c.t} className="h-full w-full object-cover" loading="lazy" />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-semibold text-lg">{c.t}</h3>
+                  <p className="mt-2 text-slate-600">{c.d}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 2) QUICK STRIP */}
+      {/* QUICK STRIP */}
       <section className="py-6" style={{ backgroundColor: COLORS.paper }}>
         <div className="mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
           {[
@@ -172,7 +212,7 @@ export default function App() {
           <Kicker>A Selection From Our Panel of Lenders</Kicker>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold">Access to Australia’s Leading Banks & Lenders</h2>
 
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
+        <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
             {[
               { src: "/logos/bb.png", alt: "Westpac" },
               { src: "/logos/cbaa.png", alt: "Commonwealth Bank" },
@@ -241,7 +281,7 @@ export default function App() {
             <a href={`tel:${BRAND.phone}`} className="rounded-lg px-6 py-3 font-semibold text-slate-900 bg-white/90 hover:bg-white">
               Call {BRAND.phone}
             </a>
-            <a href={`mailto:${BRAND.email}`} className="rounded-lg px-6 py-3 font-semibold border border-white/70">
+            <a href={CONSULT_MAILTO} className="rounded-lg px-6 py-3 font-semibold border border-white/70 text-white">
               Email {BRAND.email}
             </a>
           </div>
