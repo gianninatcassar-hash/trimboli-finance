@@ -134,59 +134,62 @@ export default function App() {
       <Topbar />
       <Nav />
 
-      {/* ---------- HERO (centered, no overlap) ---------- */}
-      <section id="home" className="relative">
-        <div className="relative isolate h-[72vh] md:h-[78vh] min-h-[520px]">
-          {/* Banner image */}
-          <img
-            src="/hero-banner.png"
-            alt="Trimboli Finance banner"
-            className="absolute inset-0 -z-10 h-full w-full object-cover"
-            /* focus a little left so the dots/logo show like the original */
-            style={{ objectPosition: "70% 50%" }}
-          />
-          {/* Dark overlay for readability */}
-          <div className="absolute inset-0 -z-10 bg-slate-900/50" />
+  {/* ---------- HERO (show full banner) ---------- */}
+<section id="home" className="relative">
+  <div className="relative isolate min-h-[520px] h-[72vh] md:h-[78vh] flex items-center justify-center overflow-hidden">
+    {/* Banner image: show the WHOLE image */}
+    <img
+      src="/hero-banner.png"
+      alt="Trimboli Finance banner"
+      className="max-h-full w-auto object-contain"
+      /* navy letterbox so sides/top/bottom look intentional */
+      style={{ backgroundColor: "#0b3b5a" }}
+    />
 
-          {/* Content */}
-          <div className="relative z-10 mx-auto max-w-6xl h-full px-6 sm:px-8 flex flex-col justify-center pt-6 md:pt-8">
-            <h1 className="text-white font-extrabold tracking-tight leading-[1.15] text-[38px] sm:text-5xl max-w-[24ch]">
-              <span className="block">Finance made clear.</span>
-              <span className="block mt-1">Results you can trust.</span>
-            </h1>
+    {/* Dark overlay for readability */}
+    <div className="pointer-events-none absolute inset-0 bg-slate-900/45" />
 
-            <p className="mt-3 text-white/90 text-lg">
-              {BRAND.tagline}
-            </p>
+    {/* Content */}
+    <div className="absolute inset-0 z-10 mx-auto max-w-6xl px-6 sm:px-8 flex flex-col justify-center">
+      <h1 className="text-white font-extrabold tracking-tight leading-[1.15] text-[36px] sm:text-5xl max-w-[24ch]">
+        <span className="block">Finance made clear.</span>
+        <span className="block mt-1">Results you can trust.</span>
+      </h1>
 
-            <div className="mt-6 flex flex-wrap gap-4">
-              <a
-                href={
-                  "mailto:" +
-                  BRAND.email +
-                  "?subject=" +
-                  encodeURIComponent("New consult request - website") +
-                  "&body=" +
-                  encodeURIComponent(
-                    "Hi Rocky,\n\nName:\nPhone:\nNature of enquiry:\nBest time to contact:\n\nThanks!"
-                  )
-                }
-                className="rounded-xl px-6 py-3 font-semibold text-slate-900"
-                style={{ backgroundColor: COLORS.gold }}
-              >
-                Book a consult
-              </a>
+      <p className="mt-3 text-white/90 text-lg">
+        Mortgage solutions with clarity and care.
+      </p>
 
-              <a
-                href="#services"
-                className="rounded-xl px-6 py-3 font-semibold text-white border border-white/70"
-              >
-                Our services
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="mt-6 flex flex-wrap gap-4">
+        <a
+          href={
+            "mailto:Rocky@trimbolifinance.com.au" +
+            "?subject=" + encodeURIComponent("New consult request - website") +
+            "&body=" + encodeURIComponent(
+              "Hi Rocky,\n\n" +
+              "Name:\n" +
+              "Phone:\n" +
+              "Nature of enquiry:\n" +
+              "Best time to contact:\n\n" +
+              "Thanks!"
+            )
+          }
+          className="rounded-xl px-6 py-3 font-semibold text-slate-900"
+          style={{ backgroundColor: "#c7a144" }}
+        >
+          Request a Callback
+        </a>
+
+        <a
+          href="#services"
+          className="rounded-xl px-6 py-3 font-semibold text-white border border-white/70"
+        >
+          Our services
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* ---------- WHAT WE DO ---------- */}
       <section id="services" className="py-16" style={{ background: COLORS.paper }}>
