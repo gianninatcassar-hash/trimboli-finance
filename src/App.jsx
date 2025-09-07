@@ -143,7 +143,7 @@ export default function App() {
             alt="Trimboli Finance banner"
             className="absolute inset-0 -z-10 h-full w-full object-cover"
             /* focus a little left so the dots/logo show like the original */
-            style={{ objectPosition: "30% 50%" }}
+            style={{ objectPosition: "70% 50%" }}
           />
           {/* Dark overlay for readability */}
           <div className="absolute inset-0 -z-10 bg-slate-900/50" />
