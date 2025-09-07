@@ -217,35 +217,43 @@ export default function App() {
       </section>
 
       {/* LENDERS (with extra logos) */}
-      <section id="lenders" className="py-16 bg-white border-t border-slate-200">
-        <div className="mx-auto max-w-6xl px-4 text-center">
-          <Kicker>A Selection From Our Panel of Lenders</Kicker>
-          <h2 className="mt-2 text-3xl md:text-4xl font-bold">Access to Australia’s Leading Banks & Lenders</h2>
+<section id="lenders" className="py-16 bg-white border-t border-slate-200">
+  <div className="mx-auto max-w-6xl px-4 text-center">
+    <Kicker>A Selection From Our Panel of Lenders</Kicker>
+    <h2 className="mt-2 text-3xl md:text-4xl font-bold">
+      Access to Australia’s Leading Banks & Lenders
+    </h2>
 
-        <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
-            {[
-              { src: "/logos/bb.png", alt: "Westpac" },
-              { src: "/logos/cbaa.png", alt: "Commonwealth Bank" },
-              { src: "/logos/anz.png", alt: "ANZ" },
-              { src: "/logos/ingg.png", alt: "ING" },
-              { src: "/logos/sc.png", alt: "Suncorp" },
-              { src: "/logos/so.png", alt: "Macquarie (old)" },
-              { src: "/logos/bom.png", alt: "Bank of Melbourne" },
-              { src: "/logos/bw.png", alt: "Bankwest" },
-              { src: "/logos/afgh.png", alt: "AFG" },
-              // NEW
-              { src: "/logos/hsbc.png", alt: "HSBC" },
-              { src: "/logos/red.png", alt: "RedZed" },
-              { src: "/logos/liberty.png", alt: "Liberty" },
-              { src: "/logos/amp.png", alt: "AMP" },
-              { src: "/logos/rest.png", alt: "Resimac" },
-              { src: "/logos/mac.png", alt: "Macquarie (new)" },
-            ].map((l) => (
-              <img key={l.alt} src={l.src} alt={l.alt} className="h-12 mx-auto opacity-100" />
-            ))}
-          </div>
-        </div>
-      </section>
+    <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
+      {[
+        { src: "/logos/bb.png", alt: "Westpac" },
+        { src: "/logos/cbaa.png", alt: "Commonwealth Bank" },
+        { src: "/logos/anz.png", alt: "ANZ" },
+        { src: "/logos/ingg.png", alt: "ING" },
+        { src: "/logos/sc.png", alt: "Suncorp" },
+        { src: "/logos/so.png", alt: "Macquarie (old)" },
+        { src: "/logos/bom.png", alt: "Bank of Melbourne" },
+        { src: "/logos/bw.png", alt: "Bankwest" },
+        { src: "/logos/afgh.png", alt: "AFG" },
+        { src: "/logos/hsbc.png", alt: "HSBC" },
+        { src: "/logos/red.png", alt: "RedZed" },
+        { src: "/logos/liberty.png", alt: "Liberty" },
+        { src: "/logos/amp.png", alt: "AMP" },
+        { src: "/logos/rest.png", alt: "Resimac" },
+        { src: "/logos/mac.png", alt: "Macquarie (new)" },
+        // 👇 Add Pepper here
+        { src: "/logos/pepper.png", alt: "Pepper" },
+      ].map((l) => (
+        <img
+          key={l.alt}
+          src={l.src}
+          alt={l.alt}
+          className="h-12 mx-auto opacity-100"
+        />
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* REVIEWS */}
       <section id="reviews" className="py-20" style={{ backgroundColor: COLORS.paper }}>
