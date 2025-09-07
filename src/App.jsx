@@ -128,53 +128,42 @@ export default function App() {
       <Topbar />
       <Nav />
       
-{/* HERO */}
-<section id="home" className="relative overflow-hidden">
-  {/* Background */}
-  <img
-    src="/hero-banner.png"
-    alt="Trimboli Finance banner"
-    className="w-full h-[60vh] sm:h-[70vh] object-cover"
-  />
+/* ---------- HERO ---------- */
+<section
+  id="home"
+  className="relative h-[60vh] md:h-[75vh] flex items-center justify-center text-center text-white"
+  style={{
+    backgroundImage: "url('/hero-banner.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundColor: COLORS.navy,
+  }}
+>
+  <div className="absolute inset-0 bg-black/40" /> {/* dark overlay for text contrast */}
 
-  {/* Strong, soft gradient overlay so lines in the banner don't cut through text */}
-  <div className="absolute inset-0 bg-gradient-to-b from-[#0b3b5a]/70 via-[#0b3b5a]/60 to-[#0b3b5a]/40" />
-
-  {/* Content */}
-  <div className="absolute inset-0">
-    <div className="mx-auto max-w-6xl px-4 h-full flex items-start sm:items-center">
-      {/* push headline down on mobile so it clears the stripe */}
-      <div className="pt-10 sm:pt-0">
-        <h1
-          className="text-white font-extrabold tracking-tight
-                     text-4xl sm:text-5xl md:text-6xl leading-tight sm:leading-tight md:leading-[1.15]
-                     max-w-[28ch]"
-        >
-          <span className="block">Finance made clear.</span>
-          <span className="block">Results you can trust.</span>
-        </h1>
-
-        <p className="mt-4 text-white/90 text-lg sm:text-xl max-w-[42ch]">
-          Mortgage solutions with clarity and care.
-        </p>
-
-        <div className="mt-6 flex flex-wrap gap-4">
-          <a
-            href="mailto:Rocky@trimbolifinance.com.au?subject=Book%20a%20consult&body=Hi%20Rocky,%0A%0AMy%20name:%20%0APhone:%20%0ANature%20of%20enquiry:%20%0ABest%20time%20to%20contact:%20%0A%0AThanks!"
-            className="inline-flex items-center rounded-xl px-6 py-3 text-base font-semibold text-white shadow hover:opacity-95"
-            style={{ backgroundColor: '#c7a144' }}
-          >
-            Book a consult
-          </a>
-
-          <a
-            href="#services"
-            className="inline-flex items-center rounded-xl px-6 py-3 text-base font-semibold border border-white/70 text-white/95 hover:bg-white/10"
-          >
-            Our services
-          </a>
-        </div>
-      </div>
+  <div className="relative z-10 px-4">
+    <h1 className="text-3xl md:text-5xl font-bold leading-tight">
+      Finance made clear.
+      <br />
+      Results you can trust.
+    </h1>
+    <p className="mt-4 text-lg md:text-xl text-white/90">
+      Mortgage solutions with clarity and care.
+    </p>
+    <div className="mt-6 flex justify-center gap-4 flex-wrap">
+      <a
+        href="#contact"
+        className="rounded-lg px-6 py-3 font-semibold text-white shadow"
+        style={{ backgroundColor: COLORS.gold }}
+      >
+        Book a consult
+      </a>
+      <a
+        href="#services"
+        className="rounded-lg px-6 py-3 font-semibold border border-white/70 text-white"
+      >
+        Our services
+      </a>
     </div>
   </div>
 </section>
