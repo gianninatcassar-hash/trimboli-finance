@@ -127,7 +127,46 @@ export default function App() {
     <div>
       <Topbar />
       <Nav />
+{/* HERO */}
+<section id="home" className="relative">
+  {/* Background banner (make sure /public/hero-banner.png exists) */}
+  <img
+    src="/hero-banner.png"
+    alt="Trimboli Finance Hero"
+    className="h-[58vh] md:h-[70vh] w-full object-cover"
+  />
 
+  {/* Dark overlay so text is readable */}
+  <div className="absolute inset-0 bg-[rgba(11,59,90,0.35)]" />
+
+  {/* Text + buttons */}
+  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+    <h1 className="text-white font-extrabold tracking-tight leading-snug text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+      Finance made clear.<br className="hidden sm:block" />
+      Results you can trust.
+    </h1>
+
+    <p className="mt-3 text-white/90 text-base sm:text-lg md:text-xl max-w-2xl">
+      Mortgage solutions with clarity and care.
+    </p>
+
+    <div className="mt-6 flex flex-wrap gap-4 justify-center">
+      <a
+        href="mailto:Rocky@trimbolifinance.com.au?subject=Consultation%20Request&body=Hi,%20my%20name%20is%20___.%20My%20number%20is%20___.%20My%20enquiry%20is%20___.%20Best%20time%20to%20call%20___."
+        className="rounded-lg px-6 py-3 font-semibold text-white shadow text-sm sm:text-base"
+        style={{ backgroundColor: '#c7a144' }}
+      >
+        Book a consult
+      </a>
+      <a
+        href="#services"
+        className="rounded-lg px-6 py-3 font-semibold border border-white/70 text-white text-sm sm:text-base"
+      >
+        Our services
+      </a>
+    </div>
+  </div>
+</section>
 
 
       {/* WHAT WE DO (with photos above cards) */}
