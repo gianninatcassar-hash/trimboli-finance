@@ -130,25 +130,32 @@ export default function App() {
     <div>
       <Topbar />
       <Nav />
-
-   {/* ---------- HERO ---------- */}
+{/* ---------- HERO ---------- */}
 <section id="home" className="relative overflow-hidden" aria-label="Hero">
+  {/* Background image */}
   <img
     src="/hero-banner.png"
     alt=""
     aria-hidden="true"
-    className="absolute inset-0 h-full w-full object-cover"
+    className="absolute inset-0 h-full w-full object-cover z-0"
   />
-  <div className="absolute inset-0 bg-slate-900/45 pointer-events-none" />
+
+  {/* Dark overlay */}
+  <div className="absolute inset-0 bg-slate-900/45 z-0 pointer-events-none" />
+
+  {/* Foreground content */}
   <div className="relative z-10 mx-auto max-w-6xl px-4 py-20 sm:py-24 md:py-28 text-white">
     <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
       <span className="block">Finance made clear.</span>
       <span className="block">Results you can trust.</span>
     </h1>
+
     <p className="mt-4 text-lg md:text-xl text-white/90">
       Mortgage solutions with clarity and care.
     </p>
+
     <div className="mt-8 flex flex-wrap gap-4">
+      {/* Book a consult (pre-filled email) */}
       <a
         href={
           "mailto:Rocky@trimbolifinance.com.au" +
@@ -162,6 +169,7 @@ export default function App() {
       >
         Book a consult
       </a>
+
       <a
         href="#services"
         className="inline-flex items-center rounded-xl px-6 py-3 font-semibold border border-white/60 text-white hover:bg-white/10"
@@ -172,7 +180,6 @@ export default function App() {
   </div>
 </section>
 {/* ---------- /HERO ---------- */}
-
       {/* ---------- SERVICES (What we do) ---------- */}
       <section id="services" className="py-16">
         <div className="mx-auto max-w-6xl px-4">
