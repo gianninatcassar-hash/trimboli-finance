@@ -130,7 +130,7 @@ export default function App() {
     <div>
       <Topbar />
       <Nav />
-{/* ---------- HERO ---------- */}
+      {/* ---------- HERO ---------- */}
 <section id="home" className="relative overflow-hidden" aria-label="Hero">
   {/* Background image */}
   <img
@@ -155,7 +155,6 @@ export default function App() {
     </p>
 
     <div className="mt-8 flex flex-wrap gap-4">
-      {/* Book a consult (pre-filled email) */}
       <a
         href={
           "mailto:Rocky@trimbolifinance.com.au" +
