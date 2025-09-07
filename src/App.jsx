@@ -134,59 +134,52 @@ export default function App() {
       <Topbar />
       <Nav />
 
-  {/* ---------- HERO (show full banner) ---------- */}
+  {/* ---------- HERO (image only, text below) ---------- */}
 <section id="home" className="relative">
-  <div className="relative isolate min-h-[520px] h-[72vh] md:h-[78vh] flex items-center justify-center overflow-hidden">
-    {/* Banner image: show the WHOLE image */}
+  {/* Banner image */}
+  <div className="w-full">
     <img
       src="/hero-banner.png"
       alt="Trimboli Finance banner"
-      className="max-h-full w-auto object-contain"
-      /* navy letterbox so sides/top/bottom look intentional */
-      style={{ backgroundColor: "#0b3b5a" }}
+      className="w-full h-[60vh] md:h-[75vh] object-cover"
     />
+  </div>
 
-    {/* Dark overlay for readability */}
-    <div className="pointer-events-none absolute inset-0 bg-slate-900/45" />
+  {/* Text + buttons BELOW the banner */}
+  <div className="bg-white py-10 px-6 sm:px-8 text-center">
+    <h1 className="text-slate-900 font-extrabold tracking-tight leading-tight text-3xl sm:text-5xl">
+      Finance made clear. <br className="hidden sm:block" />
+      Results you can trust.
+    </h1>
 
-    {/* Content */}
-    <div className="absolute inset-0 z-10 mx-auto max-w-6xl px-6 sm:px-8 flex flex-col justify-center">
-      <h1 className="text-white font-extrabold tracking-tight leading-[1.15] text-[36px] sm:text-5xl max-w-[24ch]">
-        <span className="block">Finance made clear.</span>
-        <span className="block mt-1">Results you can trust.</span>
-      </h1>
+    <p className="mt-4 text-slate-600 text-lg">
+      {BRAND.tagline}
+    </p>
 
-      <p className="mt-3 text-white/90 text-lg">
-        Mortgage solutions with clarity and care.
-      </p>
+    <div className="mt-6 flex flex-wrap justify-center gap-4">
+      <a
+        href={
+          "mailto:" +
+          BRAND.email +
+          "?subject=" +
+          encodeURIComponent("New consult request - website") +
+          "&body=" +
+          encodeURIComponent(
+            "Hi Rocky,\n\nName:\nPhone:\nNature of enquiry:\nBest time to contact:\n\nThanks!"
+          )
+        }
+        className="rounded-xl px-6 py-3 font-semibold text-slate-900"
+        style={{ backgroundColor: COLORS.gold }}
+      >
+        Request a Callback
+      </a>
 
-      <div className="mt-6 flex flex-wrap gap-4">
-        <a
-          href={
-            "mailto:Rocky@trimbolifinance.com.au" +
-            "?subject=" + encodeURIComponent("New consult request - website") +
-            "&body=" + encodeURIComponent(
-              "Hi Rocky,\n\n" +
-              "Name:\n" +
-              "Phone:\n" +
-              "Nature of enquiry:\n" +
-              "Best time to contact:\n\n" +
-              "Thanks!"
-            )
-          }
-          className="rounded-xl px-6 py-3 font-semibold text-slate-900"
-          style={{ backgroundColor: "#c7a144" }}
-        >
-          Request a Callback
-        </a>
-
-        <a
-          href="#services"
-          className="rounded-xl px-6 py-3 font-semibold text-white border border-white/70"
-        >
-          Our services
-        </a>
-      </div>
+      <a
+        href="#services"
+        className="rounded-xl px-6 py-3 font-semibold text-slate-900 border border-slate-300"
+      >
+        Our services
+      </a>
     </div>
   </div>
 </section>
