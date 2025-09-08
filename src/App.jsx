@@ -267,7 +267,8 @@ export default function App() {
         { name: "Sarah M.", text: "Rocky made refinancing simple and stress-free. Clear options, great rate." },
         { name: "Daniel P.", text: "First-home journey felt easy. Professional, patient, and proactive." },
         { name: "Melissa T.", text: "From application to settlement, everything was handled perfectly." },
-       { name: "Tariq C.", text: "Rocky was an amazing help in our Homebuying Journey, which we didn't think was possible before speaking to him, an amazing serivce to whom we plan to use for many years to come." },
+        { name: "Tariq C.", text: "Rocky was an amazing help in our Homebuying Journey, which we didn't think was possible before speaking to him, an amazing serivce to whom we plan to use for many years to come." },
+        { name: "Ruby G.", text: "Rocky made buying my first-home simple and stress-free, guiding me through with patience and expertise. I would strongly recomend." },
       ].map((r, i) => (
         <div key={i} className="rounded-2xl bg-white p-6 shadow border border-slate-100">
           <p className="text-yellow-500">★★★★★</p>
