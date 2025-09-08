@@ -256,25 +256,77 @@ export default function App() {
         </div>
       </section>
 
-      {/* ---------- REVIEWS ---------- */}
-      <section id="reviews" className="py-20" style={{ background: COLORS.paper }}>
-        <div className="mx-auto max-w-6xl px-4">
-          <SectionHeader kicker="Reviews" title="What our clients say" />
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {[
-              { name: "Sarah M.", text: "Rocky made refinancing simple and stress-free. Clear options, great rate." },
-              { name: "Daniel P.", text: "First-home journey felt easy. Professional, patient, and proactive." },
-              { name: "Melissa T.", text: "From application to settlement, everything was handled perfectly." },
-            ].map((r, i) => (
-              <div key={i} className="rounded-2xl bg-white p-6 shadow border border-slate-100">
-                <p className="text-yellow-500">★★★★★</p>
-                <p className="mt-2 text-slate-700 italic">“{r.text}”</p>
-                <p className="mt-3 font-semibold" style={{ color: COLORS.navy }}>— {r.name}</p>
-              </div>
-            ))}
-          </div>
+   {/* ---------- REVIEWS ---------- */}
+<section id="reviews" className="py-20" style={{ background: COLORS.paper }}>
+  <div className="mx-auto max-w-6xl px-4">
+    <SectionHeader kicker="Reviews" title="What our clients say" />
+
+    {/* Static reviews you control */}
+    <div className="mt-10 grid gap-6 md:grid-cols-2">
+      {[
+        { name: "Sarah M.", text: "Rocky made refinancing simple and stress-free. Clear options, great rate." },
+        { name: "Daniel P.", text: "First-home journey felt easy. Professional, patient, and proactive." },
+        { name: "Melissa T.", text: "From application to settlement, everything was handled perfectly." },
+      ].map((r, i) => (
+        <div key={i} className="rounded-2xl bg-white p-6 shadow border border-slate-100">
+          <p className="text-yellow-500">★★★★★</p>
+          <p className="mt-2 text-slate-700 italic">“{r.text}”</p>
+          <p className="mt-3 font-semibold" style={{ color: COLORS.navy }}>— {r.name}</p>
         </div>
-      </section>
+      ))}
+    </div>
+
+    {/* Simple email form (no backend) */}
+    <form
+      action={`mailto:${BRAND.email}`}
+      method="POST"
+      encType="text/plain"
+      className="mt-12 max-w-xl mx-auto bg-white p-6 rounded-2xl shadow border border-slate-100"
+    >
+      <h3 className="text-xl font-bold mb-4 text-slate-900">Leave a review</h3>
+
+      <label className="block mb-2 font-medium text-slate-800">Name</label>
+      <input
+        type="text"
+        name="Name"
+        required
+        className="w-full border rounded-lg px-3 py-2 mb-4"
+        placeholder="Your name"
+      />
+
+      <label className="block mb-2 font-medium text-slate-800">Rating</label>
+      <select name="Rating" className="w-full border rounded-lg px-3 py-2 mb-4" defaultValue="5">
+        <option value="5">⭐⭐⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="1">⭐</option>
+      </select>
+
+      <label className="block mb-2 font-medium text-slate-800">Your review</label>
+      <textarea
+        name="Review"
+        required
+        rows="4"
+        className="w-full border rounded-lg px-3 py-2 mb-6"
+        placeholder="Type your feedback..."
+      />
+
+      <button
+        type="submit"
+        className="w-full rounded-lg px-6 py-3 font-semibold text-slate-900"
+        style={{ backgroundColor: COLORS.gold }}
+        title="This will open your email app to send the review"
+      >
+        Email your review
+      </button>
+
+      <p className="mt-3 text-sm text-slate-500 text-center">
+        Submitting will open your email app. We’ll add approved reviews to this page soon.
+      </p>
+    </form>
+  </div>
+</section>
 
       {/* ---------- CONTACT ---------- */}
       <section
