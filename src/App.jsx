@@ -264,7 +264,7 @@ export default function App() {
     {/* Static reviews you control */}
     <div className="mt-10 grid gap-6 md:grid-cols-2">
       {[
-        { name: "Sarah M.", text: "Rocky made refinancing simple and stress-free. Clear options, great rate." },
+        { name: "Sarah M.", text: "After months with struggling to get a pre-approval due to being self-employed, Rocky was able to get a pre-approval in weeks and us into our new home. We couldn't be happier." },
         { name: "Daniel P.", text: "First-home journey felt easy. Professional, patient, and proactive." },
         { name: "Melissa T.", text: "From application to settlement, everything was handled perfectly." },
         { name: "Tariq C.", text: "Rocky was an amazing help in our Homebuying Journey, which we didn't think was possible before speaking to him, an amazing serivce to whom we plan to use for many years to come." },
